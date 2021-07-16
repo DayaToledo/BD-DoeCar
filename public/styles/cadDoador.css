@@ -1,0 +1,109 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #E8D3BE;
+  font-family: 'Roboto', sans-serif;
+  color: #505A5A;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 90px;
+  background: #DF7B63;
+}
+
+form {
+  width: 100%;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#boxSelector {
+  width: 90%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 4px solid #DF7B63;
+}
+
+#boxSelector > label {
+  font-weight: bold;
+  font-size: 35px;
+}
+
+#boxSelector > select {
+  width: 200px;
+  height: 35px;
+  border-radius: 25px;
+  align-self: center;
+  font-size: 18px;
+  border-right: 20px solid #EBF0EF;
+}
+
+#boxData {
+  width: 80%;
+  height: calc(100% - 100px);
+  display: flex;
+  flex-direction: row;
+}
+
+#boxData > fieldset {
+  width: 50%;
+  border: none;
+  padding: 100px 15px 15px 15px;
+  display: flex;
+  flex-direction: column;
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+label {
+  font-size: 18px;
+}
+
+input,
+select {
+  background-color: #EBF0EF;
+  width: 55%;
+  height: 30px;
+  align-self: flex-end;
+  border: none;
+  border-radius: 15px;
+  margin-left: 15px;
+  padding: 0 20px;
+  font: normal 15px 'Roboto', sans-serif;
+  color: #505A5A;
+}
+
+button {
+  background-color: #8AB4CD;
+  color: #EBF0EF;
+  font-weight: bold;
+  font-size: 19px;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 180px;
+  align-self: flex-end;
+  margin-top: 40px;
+}
+
+button:hover {
+  background-color: #DF7B63;
+}
