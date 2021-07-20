@@ -1,0 +1,77 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #e8d3be;
+  font-family: "Roboto", sans-serif;
+  color: #505a5a;
+  width: 100%;
+  height: 100vh;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 90px;
+  background: #df7b63;
+}
+
+.botao-doar {
+  width: 120px;
+  height: 50px;
+  background: #8ab4cd;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #ebf0ef;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+  margin-top: 20px;
+  margin-right: 5%;
+  border: none;
+}
+
+.botao-doar:hover {
+  background-color: #e8d3be;
+  color: #484b4b;
+}
+
+.titulo {
+  color: #484b4b;
+  font-weight: 700;
+  font-size: 37px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.card {
+  margin: auto;
+  background: #8ab4cd;
+  width: 73%;
+  height: 85px;
+  position: relative;
+  display: flex;
+  font-size: 16px;
+  font-weight: 700;
+  color: #484b4b;
+  margin-bottom: 20px;
+}
+
+.divisoria1,
+.divisoria2,
+.divisoria3,
+.divisoria4 {
+  margin: auto 0.5% auto auto;
+  width: 18.25%;
+}
+
+.divisoria1,
+.divisoria2,
+.divisoria3 {
+  border-right: 1px solid #505a5a;
+}
+
+.margin-cards {
+  height: 20px;
+}
