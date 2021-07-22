@@ -70,11 +70,12 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: flex-end;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 label {
   font-size: 18px;
+  text-align: end;
 }
 
 input,
@@ -106,4 +107,30 @@ button {
 
 button:hover {
   background-color: #DF7B63;
+}
+
+@media(max-width: 720px) {
+  #boxSelector {
+    flex-direction: column;
+    height: 180px;
+  }
+
+  #boxSelector > label {
+    margin-bottom: 20px;
+    font-size: 25px;
+  }
+
+  #boxData {
+    height: calc(100% - 180px);
+    flex-direction: column;
+  }
+
+  #boxData > fieldset {
+    width: 95%;
+    padding: 40px 0px 0px 0px;
+  }
+
+  label {
+    font-size: 15px;
+  }
 }
