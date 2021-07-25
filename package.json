@@ -10,6 +10,6 @@
     "nunjucks": "^3.2.3"
   },
   "scripts": {
-    "build": "node src/server.js"
+    "start": "node src/server.js"
   }
 }
