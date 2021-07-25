@@ -1,0 +1,12 @@
+{
+  "name": "BD-DoeCar",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/DayaToledo/BD-DoeCar.git",
+  "author": "DayaToledo <dayanabritotoledo_@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nunjucks": "^3.2.3"
+  }
+}
