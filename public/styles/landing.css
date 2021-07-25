@@ -78,7 +78,7 @@ div{
 
 .imgHome {
     width: 100%;
-    height: fit-content;
+    height: auto;
     margin-top: 7px;
 }
 
