@@ -16,6 +16,13 @@ header {
   background: #df7b63;
 }
 
+.logo {
+  width: 75px;
+  height: 75px;
+  margin-top: 5px;
+  margin-left: 47%;
+}
+
 .botao-doar {
   width: 120px;
   height: 50px;
@@ -30,6 +37,7 @@ header {
   margin-top: 20px;
   margin-right: 5%;
   border: none;
+  cursor: pointer;
 }
 
 .botao-doar:hover {
@@ -74,4 +82,17 @@ header {
 
 .margin-cards {
   height: 20px;
+}
+
+@media (max-width: 720px) {
+  .card {
+    width: 80%;
+    font-size: 13px;
+  }
+  .divisoria1,
+  .divisoria2,
+  .divisoria3,
+  .divisoria4 {
+    margin: auto 0.9% auto auto;
+  }
 }
