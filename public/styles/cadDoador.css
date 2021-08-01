@@ -1,13 +1,13 @@
 html,
 body {
+  display: flex;
   padding: 0;
   margin: 0;
   background: #E8D3BE;
   font-family: 'Roboto', sans-serif;
   color: #505A5A;
   width: 100vw;
-  height: 100vh;
-  display: flex;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -18,12 +18,11 @@ header {
 }
 
 form {
-  width: 100%;
-  height: calc(100% - 90px);
+  width: 80%;
+  height: 100%;
+  margin-top: 4rem;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  flex-direction: row;
 }
 
 #boxSelector {
@@ -33,6 +32,7 @@ form {
   flex-direction: row;
   align-items: center;
   justify-content: center;
+  margin-left: 5%;
   border-bottom: 4px solid #DF7B63;
 }
 
@@ -50,19 +50,22 @@ form {
   border-right: 20px solid #EBF0EF;
 }
 
-#boxData {
-  width: 80%;
-  height: calc(100% - 100px);
-  display: flex;
-  flex-direction: row;
-}
-
-#boxData > fieldset {
-  width: 50%;
-  border: none;
-  padding: 100px 15px 15px 15px;
+.boxData {
+  width: 100%;
+  height: calc(100% - 90px);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form > fieldset {
+  width: 50%;
+  border: none;
+  padding: 0px 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 7%;
 }
 
 .boxInput {
@@ -109,10 +112,34 @@ button:hover {
   background-color: #DF7B63;
 }
 
+.mobile-only{
+  display: none;
+}
+
+.veiculo{
+  margin-top: 2em;
+}
 @media(max-width: 720px) {
+  body{
+    display: block;
+  }
+
+  .mobile-only{
+    display: block;
+    margin-top: 2em;
+  }
+
+  .pc-only{
+    display: none;
+  }
+
   #boxSelector {
     flex-direction: column;
     height: 180px;
+  }
+
+  #boxSelector > select {
+    margin-bottom: 1.5rem;
   }
 
   #boxSelector > label {
@@ -120,13 +147,14 @@ button:hover {
     font-size: 25px;
   }
 
-  #boxData {
-    height: calc(100% - 180px);
+  form {
+    height: calc(100% - 100px);
+    margin-top: 1rem;
     flex-direction: column;
   }
 
-  #boxData > fieldset {
-    width: 95%;
+  form > fieldset {
+    width: 90%;
     padding: 40px 0px 0px 0px;
   }
 

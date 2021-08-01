@@ -15,18 +15,18 @@
 <body>
   <header></header>
 
-  <form action="/listDonation" method="POST">
-    <div id="boxSelector">
-      <label for="">Como você quer participar?</label>
-      <select>
-        <option value=""></option>
-        <option value="doador">DOADOR</option>
-        <option value="voluntario">VOLUNTÁRIO</option>
-        <option value="instituicao">INSTITUIÇÃO</option>
-      </select>
-    </div>
+  <div id="boxSelector">
+    <label for="">Como você quer participar?</label>
+    <select id="seletor">
+      <option value="doador" selected>DOADOR</option>
+      <option value="voluntario">VOLUNTÁRIO</option>
+      <option value="instituicao">INSTITUIÇÃO</option>
+    </select>
+  </div>
 
-    <div id="boxData">
+  
+    <div id="boxDataDoador" class="boxData">
+      <form action="/listDonation" method="POST">
       <fieldset>
         <div class="boxInput">
           <label for="">Nome</br>completo</label>
@@ -42,15 +42,164 @@
           <label for="">Rua</label>
           <input type="text">
         </div>
+        
+        <div class="boxInput">
+          <label for="">Número</label>
+          <input type="number">
+        </div>
 
         <div class="boxInput">
           <label for="">Bairro</label>
           <input type="text">
         </div>
 
+      </fieldset>
+
+      <fieldset>
+        <div class="boxInput">
+          <label for="">Email</label>
+          <input type="email">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Senha</label>
+          <input type="password">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Confirmar</br>senha</label>
+          <input type="password">
+        </div>
+
+        <button>CADASTRAR</button>
+      </fieldset>
+    </form>
+    </div>
+
+
+    <div id="boxDataVoluntario" class="boxData">
+      <form action="/listDonation" method="POST">
+      <fieldset>
+        <div class="boxInput">
+          <label for="">Nome</br>completo</label>
+          <input type="text">
+        </div>
+
+        <div class="boxInput">
+          <label for="">CPF</label>
+          <input type="number">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Rua</label>
+          <input type="text">
+        </div>
         <div class="boxInput">
           <label for="">Número</label>
           <input type="number">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Bairro</label>
+          <input type="text">
+        </div>
+        
+       
+        <div class="mobile-only">
+          <div class="boxInput">
+            <label for="">Email</label>
+            <input type="email">
+          </div>
+
+          <div class="boxInput">
+            <label for="">Senha</label>
+            <input type="password">
+          </div>
+
+          <div class="boxInput">
+            <label for="">Confirmar</br>senha</label>
+            <input type="password">
+          </div> 
+      </div>
+
+      <div class="veiculo">
+          <div class="boxInput">
+            <label for="">Placa</label>
+            <input type="text">
+          </div>
+  
+          <div class="boxInput">
+            <label for="">Marca</label>
+            <input type="number">
+          </div>
+  
+          <div class="boxInput">
+            <label for="">Modelo</label>
+            <input type="text">
+          </div>
+  
+          <div class="boxInput">
+            <label for="">Ano</label>
+            <input type="text">
+          </div>
+      </div>
+      </fieldset>
+
+      <fieldset>
+        <div class="pc-only">
+        <div class="boxInput">
+          <label for="">Email</label>
+          <input type="email">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Senha</label>
+          <input type="password">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Confirmar</br>senha</label>
+          <input type="password">
+        </div>     
+      </div>  
+        <button>CADASTRAR</button>
+      </fieldset>
+    </form>
+
+    </div>
+
+
+    <div id="boxDataInstituicao" class="boxData">
+      <form action="/listDonation" method="POST">
+      <fieldset>
+        <div class="boxInput">
+          <label for="">Nome da</br>instituição</label>
+          <input type="text">
+        </div>
+
+        <div class="boxInput">
+          <label for="">CNPJ</label>
+          <input type="number">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Ramo</label>
+          <input type="text">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Rua</label>
+          <input type="text">
+        </div>
+        
+        <div class="boxInput">
+          <label for="">Número</label>
+          <input type="number">
+        </div>
+
+        <div class="boxInput">
+          <label for="">Bairro</label>
+          <input type="text">
         </div>
       </fieldset>
 
@@ -72,9 +221,10 @@
 
         <button>CADASTRAR</button>
       </fieldset>
+    </form>
     </div>
-  </form>
-
+ 
+<script src="scripts/register.js"></script>
 </body>
 
 </html>
