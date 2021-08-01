@@ -1,0 +1,98 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: #e8d3be;
+  font-family: "Roboto", sans-serif;
+  color: #505a5a;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 90px;
+  background: #df7b63;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+  margin-top: 5px;
+  margin-left: 47%;
+}
+
+h1 {
+  font-size: 35px;
+  text-align: center;
+  margin-top: 45px;
+}
+
+form {
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4%;
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 25px;
+  width: 100%;
+}
+
+label {
+  font-size: 20px;
+  text-align: center;
+}
+
+input {
+  background-color: #ebf0ef;
+  width: 20%;
+  height: 32px;
+  align-self: center;
+  border: none;
+  border-radius: 15px;
+  margin-left: 15px;
+  padding: 0 20px;
+  font: normal 15px "Roboto", sans-serif;
+  color: #505a5a;
+}
+
+button {
+  background-color: #8ab4cd;
+  color: #ebf0ef;
+  font-weight: bold;
+  font-size: 20px;
+  border: none;
+  border-radius: 25px;
+  height: 45px;
+  width: 185px;
+  margin-top: 8%;
+  margin-left: 43%;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #df7b63;
+}
+
+@media (max-width: 720px) {
+  input {
+    width: 30%;
+  }
+
+  button {
+    font-size: 18px;
+    border: none;
+    height: 35px;
+    width: 175px;
+    margin-top: 8%;
+    margin-left: 38%;
+  }
+}
