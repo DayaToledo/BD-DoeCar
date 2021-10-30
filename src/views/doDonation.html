@@ -20,32 +20,32 @@
     </header>
 
     <h1>DOAÇÃO</h1>
-    <form action="/listDonation" method="POST">
+    <form action="/saveDoacao" method="POST">
       <div class="boxInput">
-        <label for="">Descrição</label>
-        <input type="email" />
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao" name="descricao"/>
       </div>
 
       <div id="boxSelector">
-        <label for="">Categoria</label>
-        <select>
+        <label for="cod_categ">Categoria</label>
+        <select id="cod_categ" name="cod_categ">
           <option value=""></option>
-          <option value="">Categoria 1</option>
-          <option value="">Categoria 2</option>
+          <option value="1">Categoria 1</option>
+          <option value="2">Categoria 2</option>
         </select>
       </div>
 
       <div class="boxInput">
-        <label for="">Quantidade</label>
-        <input type="email" />
+        <label for="quantidade">Quantidade</label>
+        <input type="number" name="quantidade" id="quantidade"/>
       </div>
 
       <div id="boxSelector">
-        <label for="">Instituição</label>
-        <select>
+        <label for="cod_institu">Instituição</label>
+        <select id="cod_institu" name="cod_institu">
           <option value=""></option>
-          <option value="">Instituição 1</option>
-          <option value="">Instituição 2</option>
+          <option value="1">Instituição 1</option>
+          <option value="2">Instituição 2</option>
         </select>
       </div>
 
