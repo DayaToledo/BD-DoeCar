@@ -1,4 +1,12 @@
-const { pageLanding, pageRegister, pageLogin, pageDoDonation, pageListDoacoes, saveDoacao } = require('./pages')
+const {
+    pageLanding,
+    pageRegister,
+    pageLogin,
+    pageDoDonation,
+    pageListDoacoes,
+    saveDoacao,
+    saveVoluntario
+} = require('./pages')
 
 const express = require('express')
 const server = express()
@@ -18,4 +26,5 @@ server
 .get("/do-donation", pageDoDonation)
 .get("/listDonation", pageListDoacoes)
 .post("/saveDoacao", saveDoacao)
+.post("/saveVoluntario", saveVoluntario)
 .listen(5500)
