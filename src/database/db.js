@@ -12,6 +12,28 @@ function execute(db){
           cod_doador INTEGER,
           cod_institu INTEGER
         );
+
+        CREATE TABLE IF NOT EXISTS voluntario(
+          cod_volunt INTEGER PRIMARY KEY AUTOINCREMENT,
+          nome TEXT,
+          cpf TEXT,
+          rua TEXT,
+          nro TEXT,
+          bairro TEXT,
+          email TEXT,
+          senha TEXT
+        );
+
+        CREATE TABLE IF NOT EXISTS veiculo(
+          cod_veiculo INTEGER PRIMARY KEY AUTOINCREMENT,
+          placa TEXT,
+          modelo TEXT,
+          ano TEXT,
+          marca TEXT,
+          cod_volunt INTEGER,
+          FOREIGN KEY (cod_volunt) REFERENCES voluntario(cod_volunt)
+        );
+
     `)
 }
 

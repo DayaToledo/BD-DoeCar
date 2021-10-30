@@ -27,8 +27,8 @@
   </div>
 
 
-    <div id="boxDataDoador" class="boxData">
-      <form action="/listDonation" method="POST">
+  <div id="boxDataDoador" class="boxData">
+    <form action="/listDonation" method="POST">
       <fieldset>
         <div class="boxInput">
           <label for="">Nome</br>completo</label>
@@ -76,103 +76,103 @@
         <button>CADASTRAR</button>
       </fieldset>
     </form>
-    </div>
+  </div>
 
 
-    <div id="boxDataVoluntario" class="boxData">
-      <form action="/listDonation" method="POST">
+  <div id="boxDataVoluntario" class="boxData">
+    <form action="/saveVoluntario" method="POST" id="formVoluntario">
       <fieldset>
         <div class="boxInput">
-          <label for="">Nome</br>completo</label>
-          <input type="text">
+          <label for="nome_voluntario">Nome</br>completo</label>
+          <input type="text" id="nome_voluntario" name="nome_voluntario">
         </div>
 
         <div class="boxInput">
-          <label for="">CPF</label>
-          <input type="number">
+          <label for="cpf_voluntario">CPF</label>
+          <input type="number" id="cpf_voluntario" name="cpf_voluntario">
         </div>
 
         <div class="boxInput">
-          <label for="">Rua</label>
-          <input type="text">
+          <label for="rua_voluntario">Rua</label>
+          <input type="text" name="rua_voluntario" id="rua_voluntario">
         </div>
         <div class="boxInput">
-          <label for="">Número</label>
-          <input type="number">
+          <label for="numero_voluntario">Número</label>
+          <input type="number" name="numero_voluntario" id="numero_voluntario">
         </div>
 
         <div class="boxInput">
-          <label for="">Bairro</label>
-          <input type="text">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro_voluntario" id="bairro_voluntario">
         </div>
 
 
         <div class="mobile-only">
           <div class="boxInput">
-            <label for="">Email</label>
-            <input type="email">
+            <label for="email">Email</label>
+            <input type="email" name="email_voluntario" id="email_voluntario">
           </div>
 
           <div class="boxInput">
-            <label for="">Senha</label>
-            <input type="password">
+            <label for="senha_voluntario">Senha</label>
+            <input type="password" name="senha_voluntario" id="senha_voluntario">
           </div>
 
           <div class="boxInput">
-            <label for="">Confirmar</br>senha</label>
-            <input type="password">
+            <label for="senha_confirma_voluntario">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_voluntario" id="senha_confirma_voluntario">
           </div>
-      </div>
+        </div>
 
-      <div class="veiculo">
+        <div class="veiculo">
           <div class="boxInput">
-            <label for="">Placa</label>
-            <input type="text">
-          </div>
-
-          <div class="boxInput">
-            <label for="">Marca</label>
-            <input type="number">
+            <label for="placa_voluntario">Placa</label>
+            <input type="text" name="placa_voluntario" id="placa_voluntario">
           </div>
 
           <div class="boxInput">
-            <label for="">Modelo</label>
-            <input type="text">
+            <label for="marca_voluntario">Marca</label>
+            <input type="text" name="marca_voluntario" id="marca_voluntario">
           </div>
 
           <div class="boxInput">
-            <label for="">Ano</label>
-            <input type="text">
+            <label for="modelo_voluntario">Modelo</label>
+            <input type="text" name="modelo_voluntario" id="modelo_voluntario">
           </div>
-      </div>
+
+          <div class="boxInput">
+            <label for="ano_voluntario">Ano</label>
+            <input type="number" name="ano_voluntario" id="ano_voluntario">
+          </div>
+        </div>
       </fieldset>
 
       <fieldset>
         <div class="pc-only">
-        <div class="boxInput">
-          <label for="">Email</label>
-          <input type="email">
-        </div>
+          <div class="boxInput">
+            <label for="email_voluntario_pc">Email</label>
+            <input type="email" name="email_voluntario_pc" id="email_voluntario_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Senha</label>
-          <input type="password">
-        </div>
+          <div class="boxInput">
+            <label for="senha_voluntario_pc">Senha</label>
+            <input type="password" name="senha_voluntario_pc" id="senha_voluntario_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Confirmar</br>senha</label>
-          <input type="password">
+          <div class="boxInput">
+            <label for="senha_confirma_voluntario_pc">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_voluntario_pc" id="senha_confirma_voluntario_pc">
+          </div>
         </div>
-      </div>
-        <button>CADASTRAR</button>
+        <button type="submit" form="formVoluntario">CADASTRAR</button>
       </fieldset>
     </form>
 
-    </div>
+  </div>
 
 
-    <div id="boxDataInstituicao" class="boxData">
-      <form action="/listDonation" method="POST">
+  <div id="boxDataInstituicao" class="boxData">
+    <form action="/listDonation" method="POST">
       <fieldset>
         <div class="boxInput">
           <label for="">Nome da</br>instituição</label>
@@ -224,9 +224,9 @@
         <button>CADASTRAR</button>
       </fieldset>
     </form>
-    </div>
+  </div>
 
-<script src="scripts/register.js"></script>
+  <script src="scripts/register.js"></script>
 </body>
 
 </html>

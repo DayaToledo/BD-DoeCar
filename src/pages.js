@@ -21,7 +21,7 @@ function pageListDoacoes(req, res){
 }
 
 async function saveDoacao(req, res) {
-    //adicionar dados a lista de proffys
+    //adicionar dados a lista de doacoes
     const createDoacao = require('./database/createDoacao')
 
     const doacaoValue = {
@@ -42,11 +42,54 @@ async function saveDoacao(req, res) {
     }
 }
 
+async function saveVoluntario(req, res) {
+  // adicionar dados a lista de voluntarios
+  const createVoluntario = require('./database/createVoluntario')
+
+  console.log(req.body);
+
+  const email = req.body.email_voluntario_pc !== "" ? req.body.email_voluntario_pc : req.body.email_voluntario
+  const senha = req.body.senha_voluntario_pc !== "" ? req.body.senha_voluntario_pc : req.body.senha_voluntario
+  const confirmaSenha = req.body.senha_confirma_voluntario_pc !== "" ? req.body.senha_confirma_voluntario_pc : req.body.senha_confirma_voluntario
+
+  if (senha !== confirmaSenha) {
+    console.log("Senhas diferentes!")
+    return res.redirect("/register")
+  }
+
+  const voluntarioValue = {
+    nome: req.body.nome_voluntario,
+    cpf: req.body.cpf_voluntario,
+    rua: req.body.rua_voluntario,
+    numero: req.body.numero_voluntario,
+    bairro: req.body.bairro_voluntario,
+    email,
+    senha,
+  };
+
+  const veiculoValue = {
+    placa: req.body.placa_voluntario,
+    marca: req.body.marca_voluntario,
+    modelo: req.body.modelo_voluntario,
+    ano: req.body.ano_voluntario,
+  };
+
+  try {
+      const db = await Database
+      await createVoluntario(db, {voluntarioValue, veiculoValue})
+
+      return res.redirect("/listDonation")
+  } catch (error){
+      console.log(error)
+  }
+}
+
 module.exports = {
     pageLanding,
     pageRegister,
     pageLogin,
     pageDoDonation,
     pageListDoacoes,
-    saveDoacao
+    saveDoacao,
+    saveVoluntario,
 }
