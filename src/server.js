@@ -7,6 +7,7 @@ const {
     saveDoacao,
     saveVoluntario,
     saveDoador,
+    saveInstituicao,
 } = require('./pages')
 
 const express = require('express')
@@ -29,4 +30,5 @@ server
 .post("/saveDoacao", saveDoacao)
 .post("/saveVoluntario", saveVoluntario)
 .post("/saveDoador", saveDoador)
+.post("/saveInstituicao", saveInstituicao)
 .listen(5500)

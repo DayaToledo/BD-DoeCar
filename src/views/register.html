@@ -189,56 +189,72 @@
 
 
   <div id="boxDataInstituicao" class="boxData">
-    <form action="/listDonation" method="POST">
+    <form action="/saveInstituicao" method="POST" id="formInstituicao">
       <fieldset>
         <div class="boxInput">
-          <label for="">Nome da</br>instituição</label>
-          <input type="text">
+          <label for="nome_instituicao">Nome</br>completo</label>
+          <input type="text" id="nome_instituicao" name="nome_instituicao">
         </div>
 
         <div class="boxInput">
-          <label for="">CNPJ</label>
-          <input type="number">
+          <label for="cnpj_instituicao">CNPJ</label>
+          <input type="number" id="cnpj_instituicao" name="cnpj_instituicao">
+        </div>
+        <div class="boxInput">
+          <label for="ramo_instituicao">Ramo</label>
+          <input type="text" id="ramo_instituicao" name="ramo_instituicao">
+        </div>
+        <div class="boxInput">
+          <label for="rua_instituicao">Rua</label>
+          <input type="text" name="rua_instituicao" id="rua_instituicao">
+        </div>
+        <div class="boxInput">
+          <label for="numero_instituicao">Número</label>
+          <input type="number" name="numero_instituicao" id="numero_instituicao">
         </div>
 
         <div class="boxInput">
-          <label for="">Ramo</label>
-          <input type="text">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro_instituicao" id="bairro_instituicao">
         </div>
 
-        <div class="boxInput">
-          <label for="">Rua</label>
-          <input type="text">
-        </div>
 
-        <div class="boxInput">
-          <label for="">Número</label>
-          <input type="number">
-        </div>
+        <div class="mobile-only">
+          <div class="boxInput">
+            <label for="email">Email</label>
+            <input type="email" name="email_instituicao" id="email_instituicao">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Bairro</label>
-          <input type="text">
+          <div class="boxInput">
+            <label for="senha_instituicao">Senha</label>
+            <input type="password" name="senha_instituicao" id="senha_instituicao">
+          </div>
+
+          <div class="boxInput">
+            <label for="senha_confirma_instituicao">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_instituicao" id="senha_confirma_instituicao">
+          </div>
         </div>
       </fieldset>
 
       <fieldset>
-        <div class="boxInput">
-          <label for="">Email</label>
-          <input type="email">
-        </div>
+        <div class="pc-only">
+          <div class="boxInput">
+            <label for="email_instituicao_pc">Email</label>
+            <input type="email" name="email_instituicao_pc" id="email_instituicao_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Senha</label>
-          <input type="password">
-        </div>
+          <div class="boxInput">
+            <label for="senha_instituicao_pc">Senha</label>
+            <input type="password" name="senha_instituicao_pc" id="senha_instituicao_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Confirmar</br>senha</label>
-          <input type="password">
+          <div class="boxInput">
+            <label for="senha_confirma_instituicao_pc">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_instituicao_pc" id="senha_confirma_instituicao_pc">
+          </div>
         </div>
-
-        <button>CADASTRAR</button>
+        <button type="submit" form="formInstituicao">CADASTRAR</button>
       </fieldset>
     </form>
   </div>

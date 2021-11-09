@@ -45,6 +45,18 @@ function execute(db){
           senha TEXT
         );
 
+        CREATE TABLE IF NOT EXISTS instituicao(
+          cod_instituicao INTEGER PRIMARY KEY AUTOINCREMENT,
+          nome TEXT,
+          cnpj TEXT,
+          ramo TEXT,
+          rua TEXT,
+          nro TEXT,
+          bairro TEXT,
+          email TEXT,
+          senha TEXT
+        );
+
     `)
 }
 
