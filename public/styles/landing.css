@@ -114,19 +114,11 @@ p{
 }
 
 @media screen and (max-width: 720px) {
-  .container{
-    display: block;
-    padding: 2em 0;
-  }
+  
 
   p{
     margin: 0 10%;
     margin-top: 10%;
-  }
-
-  .botaoDiv{
-    margin: 0 10%;
-    margin-top: 2em;
   }
 
 }
