@@ -34,6 +34,17 @@ function execute(db){
           FOREIGN KEY (cod_volunt) REFERENCES voluntario(cod_volunt)
         );
 
+        CREATE TABLE IF NOT EXISTS doador(
+          cod_doador INTEGER PRIMARY KEY AUTOINCREMENT,
+          nome TEXT,
+          cpf TEXT,
+          rua TEXT,
+          nro TEXT,
+          bairro TEXT,
+          email TEXT,
+          senha TEXT
+        );
+
     `)
 }
 

@@ -28,52 +28,69 @@
 
 
   <div id="boxDataDoador" class="boxData">
-    <form action="/listDonation" method="POST">
+    <form action="/saveDoador" method="POST" id="formDoador">
       <fieldset>
         <div class="boxInput">
-          <label for="">Nome</br>completo</label>
-          <input type="text">
+          <label for="nome_doador">Nome</br>completo</label>
+          <input type="text" id="nome_doador" name="nome_doador">
         </div>
 
         <div class="boxInput">
-          <label for="">CPF</label>
-          <input type="number">
+          <label for="cpf_doador">CPF</label>
+          <input type="number" id="cpf_doador" name="cpf_doador">
         </div>
 
         <div class="boxInput">
-          <label for="">Rua</label>
-          <input type="text">
+          <label for="rua_doador">Rua</label>
+          <input type="text" name="rua_doador" id="rua_doador">
+        </div>
+        <div class="boxInput">
+          <label for="numero_doador">Número</label>
+          <input type="number" name="numero_doador" id="numero_doador">
         </div>
 
         <div class="boxInput">
-          <label for="">Número</label>
-          <input type="number">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro_doador" id="bairro_doador">
         </div>
 
-        <div class="boxInput">
-          <label for="">Bairro</label>
-          <input type="text">
-        </div>
 
+        <div class="mobile-only">
+          <div class="boxInput">
+            <label for="email">Email</label>
+            <input type="email" name="email_doador" id="email_doador">
+          </div>
+
+          <div class="boxInput">
+            <label for="senha_doador">Senha</label>
+            <input type="password" name="senha_doador" id="senha_doador">
+          </div>
+
+          <div class="boxInput">
+            <label for="senha_confirma_doador">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_doador" id="senha_confirma_doador">
+          </div>
+        </div>
       </fieldset>
 
       <fieldset>
-        <div class="boxInput">
-          <label for="">Email</label>
-          <input type="email">
-        </div>
+        <div class="pc-only">
+          <div class="boxInput">
+            <label for="email_doador_pc">Email</label>
+            <input type="email" name="email_doador_pc" id="email_doador_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Senha</label>
-          <input type="password">
-        </div>
+          <div class="boxInput">
+            <label for="senha_doador_pc">Senha</label>
+            <input type="password" name="senha_doador_pc" id="senha_doador_pc">
+          </div>
 
-        <div class="boxInput">
-          <label for="">Confirmar</br>senha</label>
-          <input type="password">
+          <div class="boxInput">
+            <label for="senha_confirma_doador_pc">Confirmar</br>senha</label>
+            <input type="password" name="senha_confirma_doador_pc" id="senha_confirma_doador_pc">
+          </div>
         </div>
-
-        <button>CADASTRAR</button>
+        <button type="submit" form="formDoador">CADASTRAR</button>
       </fieldset>
     </form>
   </div>

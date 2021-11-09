@@ -5,7 +5,8 @@ const {
     pageDoDonation,
     pageListDoacoes,
     saveDoacao,
-    saveVoluntario
+    saveVoluntario,
+    saveDoador,
 } = require('./pages')
 
 const express = require('express')
@@ -27,4 +28,5 @@ server
 .get("/listDonation", pageListDoacoes)
 .post("/saveDoacao", saveDoacao)
 .post("/saveVoluntario", saveVoluntario)
+.post("/saveDoador", saveDoador)
 .listen(5500)
