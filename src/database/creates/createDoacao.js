@@ -7,12 +7,22 @@ module.exports = async function(db, {doacaoValue}){
         cod_categ,
         cod_doador,
         cod_institu
+        rua,
+        nro,
+        bairro,
+        data_criacao,
+        disponivel_ate
       ) VALUES (
           "${doacaoValue.descricao}",
           "${doacaoValue.quantidade}",
           "${doacaoValue.cod_categ}",
           "${doacaoValue.cod_doador}",
-          "${doacaoValue.cod_institu}"
+          "${doacaoValue.cod_institu}",
+          "${doacaoValue.rua}",
+          "${doacaoValue.nro}",
+          "${doacaoValue.bairro}",
+          "${doacaoValue.data_criacao}",
+          "${doacaoValue.disponivel_ate}"
       );
   `)
 }

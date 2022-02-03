@@ -1,15 +1,4 @@
-const {
-    pageLanding,
-    pageRegister,
-    pageLogin,
-    pageDoDonation,
-    pageListDoacoes,
-    saveDoacao,
-    saveVoluntario,
-    saveDoador,
-    saveInstituicao,
-} = require('./pages')
-
+const { router } = require('./routes')
 const express = require('express')
 const server = express()
 
@@ -22,13 +11,5 @@ nunjucks.configure('src/views', {
 server
 .use(express.urlencoded({ extended: true }))
 .use(express.static("public"))
-.get("/", pageLanding)
-.get("/register", pageRegister)
-.get("/login", pageLogin)
-.get("/do-donation", pageDoDonation)
-.get("/listDonation", pageListDoacoes)
-.post("/saveDoacao", saveDoacao)
-.post("/saveVoluntario", saveVoluntario)
-.post("/saveDoador", saveDoador)
-.post("/saveInstituicao", saveInstituicao)
+.use(router)
 .listen(5500)
