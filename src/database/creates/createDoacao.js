@@ -6,7 +6,7 @@ module.exports = async function(db, {doacaoValue}){
         quantidade,
         cod_categ,
         cod_doador,
-        cod_institu
+        cod_institu,
         rua,
         nro,
         bairro,
@@ -19,7 +19,7 @@ module.exports = async function(db, {doacaoValue}){
           "${doacaoValue.cod_doador}",
           "${doacaoValue.cod_institu}",
           "${doacaoValue.rua}",
-          "${doacaoValue.nro}",
+          "${doacaoValue.numero}",
           "${doacaoValue.bairro}",
           "${doacaoValue.data_criacao}",
           "${doacaoValue.disponivel_ate}"
