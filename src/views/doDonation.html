@@ -12,6 +12,8 @@
     />
     <link rel="stylesheet" href="/styles/doDonation.css" />
     <title>DOECAR | Cadastro de doação</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>
   </head>
 
   <body>
@@ -20,7 +22,7 @@
     </header>
 
     <h1>DOAÇÃO</h1>
-    <form action="/saveDoacao" method="POST">
+    <form method="POST" id="formDoacao">
       <div class="boxInput">
         <label for="descricao">Descrição</label>
         <input type="text" id="descricao" name="descricao"/>
@@ -48,8 +50,41 @@
           <option value="2">Instituição 2</option>
         </select>
       </div>
-
-      <button>CADASTRAR</button>
     </form>
+    <button onclick="enviarForm()" >CADASTRAR</button>
   </body>
 </html>
+<script>
+  function serializeJSON(form) {
+    var json = {};
+    $(form).serializeArray().forEach(function (item) {
+      if (!json[item.name]) {
+        json[item.name] = item.value;
+        return;
+      }
+      if (!Array.isArray(json[item.name]))
+        json[item.name] = [json[item.name]];
+      json[item.name].push(item.value);
+    });
+    return json;
+  }
+
+  function enviarForm() {
+    const user = JSON.parse(sessionStorage.getItem('USER'));
+    const data = serializeJSON("#formDoacao");
+    console.log(user)
+    data.rua = user.rua;
+    data.numero = user.nro;
+    data.bairro = user.bairro;
+    data.cod_doador = user.cod_doador;
+
+    console.log(data);
+    $.ajax({
+        type: "POST",
+        data,
+        url: "/saveDoacao",
+        cache: false,
+
+    });
+  }
+</script>

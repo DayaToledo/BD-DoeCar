@@ -10,7 +10,12 @@ function execute(db){
           quantidade INTEGER,
           cod_categ INTEGER,
           cod_doador INTEGER,
-          cod_institu INTEGER
+          cod_institu INTEGER,
+          rua TEXT,
+          nro TEXT,
+          bairro TEXT,
+          data_criacao TEXT,
+          disponivel_ate TEXT
         );
 
         CREATE TABLE IF NOT EXISTS voluntario(

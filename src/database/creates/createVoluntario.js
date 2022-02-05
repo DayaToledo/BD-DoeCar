@@ -1,4 +1,4 @@
-module.exports = async function(db, {voluntarioValue, veiculoValue}){
+module.exports = async function(db, {voluntarioValue}){
   // inserir dados na tabela voluntario
   const { lastID: voluntario_id } = await db.run(`
       INSERT INTO voluntario (
@@ -20,20 +20,5 @@ module.exports = async function(db, {voluntarioValue, veiculoValue}){
       );
   `)
 
-  // inserir dados na tabela veiculo
-  await db.run(`
-      INSERT INTO veiculo (
-        placa,
-        modelo,
-        ano,
-        marca,
-        cod_volunt
-      ) VALUES (
-          "${veiculoValue.placa}",
-          "${veiculoValue.modelo}",
-          "${veiculoValue.ano}",
-          "${veiculoValue.marca}",
-          "${voluntario_id}"
-      );
-  `)
+  return voluntario_id;
 }

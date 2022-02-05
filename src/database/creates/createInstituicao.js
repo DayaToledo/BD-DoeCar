@@ -1,6 +1,6 @@
 module.exports = async function(db, {instituicaoValue}){
     // inserir dados na tabela instituicao
-    const { lastID: instituicao_id } = await db.run(`
+    await db.run(`
         INSERT INTO instituicao (
           nome,
           cnpj,
