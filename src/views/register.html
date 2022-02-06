@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/styles/register.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
   <title>DOECAR | Cadastro de doador</title>
 </head>
 
@@ -90,7 +92,7 @@
             <input type="password" name="senha_confirma_doador_pc" id="senha_confirma_doador_pc">
           </div>
         </div>
-        <button type="submit" form="formDoador">CADASTRAR</button>
+        <button form="formDoador">CADASTRAR</button>
       </fieldset>
     </form>
   </div>
@@ -263,3 +265,13 @@
 </body>
 
 </html>
+
+<script>
+  $(document).ready(function () {
+    $('#formDoador').ajaxForm(function (response) {
+      console.log(response);
+      sessionStorage.setItem("USER", JSON.stringify(response));
+      window.location = `/listDonation?cod_doador=${response.cod_doador}`;
+    })
+  });
+</script>

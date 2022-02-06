@@ -11,7 +11,8 @@ module.exports = async function(db, {doacaoValue}){
         nro,
         bairro,
         data_criacao,
-        disponivel_ate
+        disponivel_ate,
+        status
       ) VALUES (
           "${doacaoValue.descricao}",
           "${doacaoValue.quantidade}",
@@ -22,7 +23,8 @@ module.exports = async function(db, {doacaoValue}){
           "${doacaoValue.numero}",
           "${doacaoValue.bairro}",
           "${doacaoValue.data_criacao}",
-          "${doacaoValue.disponivel_ate}"
+          "${doacaoValue.disponivel_ate}",
+          "Pendente"
       );
   `)
 }

@@ -3,7 +3,7 @@ const { createDoador } = require('../database/index')
 
 async function register(req, res) {
   // adicionar dados a lista de doadores
-  console.log(req.body);
+  // console.log(req.body);
 
   const email = req.body.email_doador_pc !== "" ? req.body.email_doador_pc : req.body.email_doador
   const senha = req.body.senha_doador_pc !== "" ? req.body.senha_doador_pc : req.body.senha_doador
@@ -27,9 +27,13 @@ async function register(req, res) {
 
   try {
       const db = await Database
-      await createDoador(db, {doadorValue})
+      const cod_doador = await createDoador(db, {doadorValue})
 
-      return res.redirect("/listDonation")
+      doadorValue.cod_doador = cod_doador
+      delete doadorValue.senha
+      delete doadorValue.cpf
+      delete doadorValue.email
+      return res.status(200).json(doadorValue)
   } catch (error){
       console.log(error)
   }

@@ -1,10 +1,7 @@
 const Database = require('../database/db')
 
 function formatResponse(user, typeUser, res) {
-  delete user.senha
-  delete user.cpf
   user.type = typeUser
-
   console.log(user)
   return res.status(200).json(user)
 }
@@ -18,14 +15,27 @@ async function login(req, res) {
     const db = await Database
 
     const doador = (await db.all(`
-      SELECT * FROM doador
+      SELECT
+        doador.cod_doador,
+        doador.nome,
+        doador.rua,
+        doador.nro,
+        doador.bairro
+      FROM doador
       WHERE doador.email = '${email}' and doador.senha = '${password}'
     `))[0]
 
     if (doador) return formatResponse(doador, "doador", res)
 
     const instituicao = (await db.all(`
-      SELECT * FROM instituicao
+      SELECT
+        instituicao.cod_institu,
+        instituicao.nome,
+        instituicao.rua,
+        instituicao.nro,
+        instituicao.bairro,
+        instituicao.email
+      FROM instituicao
       WHERE instituicao.email = '${email}' and instituicao.senha = '${password}'
     `))[0]
 
@@ -33,12 +43,18 @@ async function login(req, res) {
 
 
     const voluntario = (await db.all(`
-      SELECT * FROM voluntario
+      SELECT
+        voluntario.cod_volunt,
+        voluntario.nome,
+        voluntario.rua,
+        voluntario.nro,
+        voluntario.bairro,
+        voluntario.email
+      FROM voluntario
       WHERE voluntario.email = '${email}' and voluntario.senha = '${password}'
     `))[0]
 
     if (voluntario) return formatResponse(voluntario, "voluntario", res)
-
 
     return res.status(404).json({ msg: 'NOT FOUND' });
   } catch (error) {

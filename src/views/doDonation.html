@@ -1,58 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles/doDonation.css" />
-    <title>DOECAR | Cadastro de doação</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="https://malsup.github.io/jquery.form.js"></script>
-  </head>
 
-  <body>
-    <header>
-      <img src="/assets/logo.png" alt="" class="logo" />
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/doDonation.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
+  <title>DOECAR | Cadastro de doação</title>
+</head>
 
-    <h1>DOAÇÃO</h1>
-    <form method="POST" id="formDoacao">
-      <div class="boxInput">
-        <label for="descricao">Descrição</label>
-        <input type="text" id="descricao" name="descricao"/>
-      </div>
+<body>
+  <header>
+    <img src="/assets/logo.png" alt="" class="logo" />
+  </header>
 
-      <div id="boxSelector">
-        <label for="cod_categ">Categoria</label>
-        <select id="cod_categ" name="cod_categ">
-          <option value=""></option>
-          <option value="1">Categoria 1</option>
-          <option value="2">Categoria 2</option>
-        </select>
-      </div>
+  <h1>DOAÇÃO</h1>
+  <form method="POST" id="formDoacao">
+    <div class="boxInput">
+      <label for="descricao">Descrição</label>
+      <input type="text" id="descricao" name="descricao" />
+    </div>
 
-      <div class="boxInput">
-        <label for="quantidade">Quantidade</label>
-        <input type="number" name="quantidade" id="quantidade"/>
-      </div>
+    <div id="boxSelector">
+      <label for="cod_categ">Categoria</label>
+      <select id="cod_categ" name="cod_categ">
+        <option value=""></option>
+        <option value="1">Categoria 1</option>
+        <option value="2">Categoria 2</option>
+      </select>
+    </div>
 
-      <div id="boxSelector">
-        <label for="cod_institu">Instituição</label>
-        <select id="cod_institu" name="cod_institu">
-          <option value=""></option>
-          <option value="1">Instituição 1</option>
-          <option value="2">Instituição 2</option>
-        </select>
-      </div>
-    </form>
-    <button onclick="enviarForm()" >CADASTRAR</button>
-  </body>
+    <div class="boxInput">
+      <label for="quantidade">Quantidade</label>
+      <input type="number" name="quantidade" id="quantidade" />
+    </div>
+
+    <div id="boxSelector">
+      <label for="cod_institu">Instituição</label>
+      <select id="cod_institu" name="cod_institu">
+        <option value=""></option>
+        <option value="1">Instituição 1</option>
+        <option value="2">Instituição 2</option>
+      </select>
+    </div>
+  </form>
+  <button onclick="enviarForm()">CADASTRAR</button>
+</body>
+
 </html>
 <script>
   function serializeJSON(form) {
@@ -80,11 +79,10 @@
 
     console.log(data);
     $.ajax({
-        type: "POST",
-        data,
-        url: "/saveDoacao",
-        cache: false,
-
+      type: "POST",
+      data,
+      url: "/saveDoacao",
+      cache: false,
     });
   }
 </script>

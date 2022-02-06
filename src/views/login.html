@@ -1,48 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="/styles/login.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="https://malsup.github.io/jquery.form.js"></script>
-    <title>DOECAR | Login</title>
-  </head>
 
-  <body>
-    <header>
-      <img src="/assets/logo.png" alt="" class="logo" />
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/login.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
+  <title>DOECAR | Login</title>
+</head>
 
-    <h1>LOGIN</h1>
-    <form action="/verifyLogin" method="POST" id="formLogin">
-      <div class="boxInput">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email"/>
-      </div>
+<body>
+  <header>
+    <img src="/assets/logo.png" alt="" class="logo" />
+  </header>
 
-      <div class="boxInput">
-        <label for="password">Senha</label>
-        <input type="password" id="password" name="password" />
-      </div>
+  <h1>LOGIN</h1>
+  <form action="/verifyLogin" method="POST" id="formLogin">
+    <div class="boxInput">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" />
+    </div>
 
-      <button>ENTRAR</button>
-    </form>
-  </body>
+    <div class="boxInput">
+      <label for="password">Senha</label>
+      <input type="password" id="password" name="password" />
+    </div>
+
+    <button>ENTRAR</button>
+  </form>
+</body>
+
 </html>
 <script>
-  $(document).ready(function() {
-      $('#formLogin').ajaxForm(function (response) {
-        console.log(response);
-        sessionStorage.setItem("USER", JSON.stringify(response));
-        window.location = "listDonation";
-      })
+  $(document).ready(function () {
+    $('#formLogin').ajaxForm(function (response) {
+      console.log(response);
+      sessionStorage.setItem("USER", JSON.stringify(response));
+      window.location = `/listDonation?cod_doador=${response.cod_doador}`;
+    })
   });
 </script>

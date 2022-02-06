@@ -1,120 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/styles/listDoacoesFeitasDoados.css"
-    />
-    <title>DOECAR | Doações Feitas</title>
-  </head>
 
-  <body>
-    <header>
-      <img src="/assets/logo.png" alt="" class="logo" />
-      <a href="/do-donation"><button class="botao-doar">DOAR</button></a>
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/listDoacoesFeitasDoados.css" />
+  <title>DOECAR | Doações Feitas</title>
+</head>
 
-    <p class="titulo">DOAÇÕES FEITAS</p>
+<body>
+  <header>
+    <img src="/assets/logo.png" alt="" class="logo" />
+    <a href="/do-donation"><button class="botao-doar">DOAR</button></a>
+  </header>
 
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
+  <p class="titulo">DOAÇÕES FEITAS</p>
+
+  {% if doacoes == "" %}
+    <p class="noResults">Nenhuma doação encontrada!</p>
+  {% else %}
+    {% for doacao in doacoes %}
+      <div class="card">
+        <div class="divisoria1">
+          <p>{{doacao.descricao}}</p>
+        </div>
+
+        <div class="divisoria2">
+          <p>Quantidade: {{doacao.quantidade}}</p>
+        </div>
+
+        <div class="divisoria3">
+          <p>Categoria: {{doacao.categoria}}</p>
+        </div>
+
+        <div class="divisoria4">
+          <p>Instituição: <br>{{doacao.instituicao}}</p>
+        </div>
       </div>
+    {% endfor %}
+  {% endif %}
 
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
+  <div class="margin-cards"></div>
+</body>
 
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="margin-cards"></div>
-  </body>
 </html>

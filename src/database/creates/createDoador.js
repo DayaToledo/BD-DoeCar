@@ -1,6 +1,6 @@
 module.exports = async function(db, {doadorValue}){
     // inserir dados na tabela doador
-    await db.run(`
+    const { lastID: cod_doador }  = await db.run(`
         INSERT INTO doador (
           nome,
           cpf,
@@ -19,4 +19,6 @@ module.exports = async function(db, {doadorValue}){
             "${doadorValue.senha}"
         );
     `)
+
+    return cod_doador;
   }

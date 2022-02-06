@@ -1,21 +1,11 @@
 const Database = require('sqlite-async')
 
-function execute(db){
-
-    //criar as tabelas do banco de dados
-    return db.exec(`
-        CREATE TABLE IF NOT EXISTS doacao(
-          cod_doacao INTEGER PRIMARY KEY AUTOINCREMENT,
-          descricao TEXT,
-          quantidade INTEGER,
-          cod_categ INTEGER,
-          cod_doador INTEGER,
-          cod_institu INTEGER,
-          rua TEXT,
-          nro TEXT,
-          bairro TEXT,
-          data_criacao TEXT,
-          disponivel_ate TEXT
+async function execute(db) {
+  //criar as tabelas do banco de dados
+  return db.exec(`
+        CREATE TABLE IF NOT EXISTS categoria(
+          cod_categ INTEGER PRIMARY KEY AUTOINCREMENT,
+          descricao TEXT
         );
 
         CREATE TABLE IF NOT EXISTS voluntario(
@@ -51,7 +41,7 @@ function execute(db){
         );
 
         CREATE TABLE IF NOT EXISTS instituicao(
-          cod_instituicao INTEGER PRIMARY KEY AUTOINCREMENT,
+          cod_institu INTEGER PRIMARY KEY AUTOINCREMENT,
           nome TEXT,
           cnpj TEXT,
           ramo TEXT,
@@ -62,7 +52,34 @@ function execute(db){
           senha TEXT
         );
 
-    `)
+        CREATE TABLE IF NOT EXISTS doacao(
+          cod_doacao INTEGER PRIMARY KEY AUTOINCREMENT,
+          descricao TEXT,
+          quantidade INTEGER,
+          cod_categ INTEGER,
+          cod_doador INTEGER,
+          cod_institu INTEGER,
+          cod_volunt INTEGER,
+          rua TEXT,
+          nro TEXT,
+          bairro TEXT,
+          data_criacao TEXT,
+          disponivel_ate TEXT,
+          status TEXT,
+          FOREIGN KEY (cod_categ) REFERENCES categoria(cod_categ),
+          FOREIGN KEY (cod_doador) REFERENCES doador(cod_doador),
+          FOREIGN KEY (cod_institu) REFERENCES instituicao(cod_institu),
+          FOREIGN KEY (cod_volunt) REFERENCES voluntario(cod_volunt)
+        );
+  `)
 }
+
+/*
+POSSÍVEIS STATUS DE UMA DOAÇÃO:
+- Entregue
+- Pendente
+- Em andamento
+- Expirada
+*/
 
 module.exports = Database.open(__dirname + '/database.sqlite').then(execute)
