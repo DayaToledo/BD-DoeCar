@@ -7,6 +7,10 @@ const {
   pageLogin,
   pageDoDonation,
   pageListDoacoes,
+  pageListDoacoesRecebidas,
+  pageListDoacoesEntregues,
+  pageListDoacoesAndamento,
+  pageListEscolhasDoacoes,
 } = require('./pages')
 
 const Doacao = require('./controllers/doacaoController')
@@ -20,6 +24,10 @@ router.get("/register", pageRegister)
 router.get("/login", pageLogin)
 router.get("/do-donation", pageDoDonation)
 router.get("/listDonation", pageListDoacoes)
+router.get("/listDonationRecebidas", pageListDoacoesRecebidas)
+router.get("/listDonationEntregues", pageListDoacoesEntregues)
+router.get("/listDonationAndamento", pageListDoacoesAndamento)
+router.get("/listEscolhaDoacoes", pageListEscolhasDoacoes)
 
 router.post("/saveDoacao", Doacao.register)
 router.post("/saveDoador", Doador.register)

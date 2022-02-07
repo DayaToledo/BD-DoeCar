@@ -25,10 +25,30 @@ async function pageListDoacoes(req, res){
   return res.render("listDoacoesFeitasDoador.html", {doacoes})
 }
 
+function pageListDoacoesRecebidas(req, res){
+  return res.render("listDoacoesRecebidasInstitu.html")
+}
+
+function pageListDoacoesEntregues(req, res){
+  return res.render("listDoacoesEntreguesVoluntario.html")
+}
+
+function pageListDoacoesAndamento(req, res){
+  return res.render("listDoacoesAndamentoVoluntario.html")
+}
+
+function pageListEscolhasDoacoes(req, res){
+  return res.render("listEscolhasDoacoesVoluntario.html")
+}
+
 module.exports = {
     pageLanding,
     pageRegister,
     pageLogin,
     pageDoDonation,
     pageListDoacoes,
+    pageListDoacoesRecebidas,
+    pageListDoacoesEntregues,
+    pageListDoacoesAndamento,
+    pageListEscolhasDoacoes,
 }
