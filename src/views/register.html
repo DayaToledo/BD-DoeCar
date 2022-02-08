@@ -16,7 +16,7 @@
 
 <body>
   <header>
-    <img src="/assets/logo.png" alt="" class="logo" />
+    <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
   </header>
 
   <div id="boxSelector">
@@ -183,7 +183,7 @@
             <input type="password" name="senha_confirma_voluntario_pc" id="senha_confirma_voluntario_pc">
           </div>
         </div>
-        <button type="submit" form="formVoluntario">CADASTRAR</button>
+        <button form="formVoluntario">CADASTRAR</button>
       </fieldset>
     </form>
 
@@ -256,7 +256,7 @@
             <input type="password" name="senha_confirma_instituicao_pc" id="senha_confirma_instituicao_pc">
           </div>
         </div>
-        <button type="submit" form="formInstituicao">CADASTRAR</button>
+        <button form="formInstituicao">CADASTRAR</button>
       </fieldset>
     </form>
   </div>
@@ -272,6 +272,16 @@
       console.log(response);
       sessionStorage.setItem("USER", JSON.stringify(response));
       window.location = `/listDonation?cod_doador=${response.cod_doador}`;
+    })
+    $('#formInstituicao').ajaxForm(function (response) {
+      console.log(response);
+      sessionStorage.setItem("USER", JSON.stringify(response));
+      window.location = `/listDonationRecebidas?cod_institu=${response.cod_institu}`;
+    })
+    $('#formVoluntario').ajaxForm(function (response) {
+      console.log(response);
+      sessionStorage.setItem("USER", JSON.stringify(response));
+      window.location = `/listDonationAndamento?cod_volunt=${response.cod_volunt}`;
     })
   });
 </script>

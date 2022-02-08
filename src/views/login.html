@@ -16,7 +16,7 @@
 
 <body>
   <header>
-    <img src="/assets/logo.png" alt="" class="logo" />
+    <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
   </header>
 
   <h1>LOGIN</h1>
@@ -41,7 +41,20 @@
     $('#formLogin').ajaxForm(function (response) {
       console.log(response);
       sessionStorage.setItem("USER", JSON.stringify(response));
-      window.location = `/listDonation?cod_doador=${response.cod_doador}`;
+
+      switch (response.type) {
+        case "doador":
+          window.location = `/listDonation?cod_doador=${response.cod_doador}`;
+          break;
+        case "instituicao":
+          window.location = `/listDonationRecebidas?cod_institu=${response.cod_institu}`;
+          break;
+        case "voluntario":
+          window.location = `/listDonationAndamento?cod_volunt=${response.cod_volunt}`;
+          break;
+        default:
+          break;
+      }
     })
   });
 </script>

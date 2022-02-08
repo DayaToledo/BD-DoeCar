@@ -25,16 +25,42 @@ header {
 }
 
 .logo {
-    width: 75px;
-    height: 75px;
-    margin-top: 7px;
-    margin-left: 75px;
+  width: 75px;
+  height: 75px;
+  margin-top: 7px;
+  margin-left: 75px;
 }
 
-.botao-doar {
-  width: 120px;
+.botao-head {
+  width: fit-content;
+  height: 90px;
+  cursor: pointer;
+  background: #df7b63;
+  color: #ebf0ef;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  float: right;
+  padding: 0 30px;
+  border: none;
+  cursor: pointer;
+}
+
+.botao-head:hover {
+  background-color: #e79681;
+  color: #484b4b;
+}
+
+.botao-atual {
+  background-color: #e79681;
+  color: #ebf0ef;
+  border-bottom: 3px solid #ebf0ef;
+}
+
+.botao-escolher {
+  width: 150px;
   height: 50px;
-  background: #8ab4cd00;
+  background: #df7b63;
   border-radius: 50px;
   cursor: pointer;
   color: #ebf0ef;
@@ -42,14 +68,12 @@ header {
   font-size: 20px;
   font-weight: bold;
   float: right;
-  margin-top: 20px;
-  margin-right: 5%;
   border: none;
   cursor: pointer;
 }
 
-.botao-doar:hover {
-  background-color: #e8d3be00;
+.botao-escolher:hover {
+  background-color: #e8d3be;
   color: #484b4b;
 }
 
@@ -73,10 +97,27 @@ header {
   color: #484b4b;
   margin-bottom: 20px;
 
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1.2fr 1.2fr 1.2fr 0.9fr;
   grid-template-rows: 1fr;
 }
 
+.cardEntregues {
+  margin: auto;
+  background: #8ab4cd;
+  width: 73%;
+  height: 85px;
+  position: relative;
+  display: grid;
+  font-size: 16px;
+  font-weight: 700;
+  color: #484b4b;
+  margin-bottom: 20px;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+}
+
+.cardEntregues div,
 .card div {
   width: 100%;
   height: 80%;
@@ -86,14 +127,14 @@ header {
   margin: auto 0.5% auto auto;
 }
 
+.cardEntregues div p,
 .card div p {
   text-align: center;
   white-space: normal;
 }
 
 .divisoria1,
-.divisoria2,
-.divisoria3 {
+.divisoria2 {
   border-right: 1px solid #505a5a;
 }
 

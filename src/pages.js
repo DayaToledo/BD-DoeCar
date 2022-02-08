@@ -1,8 +1,10 @@
-const Doacao = require('./controllers/doacaoController')
-// const Doador = require('./controllers/doadorController')
-// const Instituicao = require('./controllers/instituicaoController')
-// const Voluntario = require('./controllers/voluntarioController')
-// const Login = require('./controllers/loginController')
+const {
+  listDoacoesFeitas,
+  listDoacoesRecebidas,
+  listDoacoesEmAndamento,
+  listDoacoesEntregues,
+  listDoacoesPendentes
+} = require('./controllers/doacaoController')
 
 function pageLanding(req, res){
     return res.render("index.html")
@@ -21,24 +23,28 @@ function pageDoDonation(req, res){
 }
 
 async function pageListDoacoes(req, res){
-  const doacoes = req.query.cod_doador ? await Doacao.listDoacoesFeitas(req) : [];
+  const doacoes = req.query.cod_doador ? await listDoacoesFeitas(req) : [];
   return res.render("listDoacoesFeitasDoador.html", {doacoes})
 }
 
-function pageListDoacoesRecebidas(req, res){
-  return res.render("listDoacoesRecebidasInstitu.html")
+async function pageListDoacoesRecebidas(req, res){
+  const doacoes = req.query.cod_institu ? await listDoacoesRecebidas(req) : [];
+  return res.render("listDoacoesRecebidasInstitu.html", {doacoes})
 }
 
-function pageListDoacoesEntregues(req, res){
-  return res.render("listDoacoesEntreguesVoluntario.html")
+async function pageListDoacoesEntregues(req, res){
+  const doacoes = req.query.cod_volunt ? await listDoacoesEntregues(req) : [];
+  return res.render("listDoacoesEntreguesVoluntario.html", {doacoes, cod_volunt: req.query.cod_volunt})
 }
 
-function pageListDoacoesAndamento(req, res){
-  return res.render("listDoacoesAndamentoVoluntario.html")
+async function pageListDoacoesAndamento(req, res){
+  const doacoes = req.query.cod_volunt ? await listDoacoesEmAndamento(req) : [];
+  return res.render("listDoacoesAndamentoVoluntario.html", {doacoes, cod_volunt: req.query.cod_volunt})
 }
 
-function pageListEscolhasDoacoes(req, res){
-  return res.render("listEscolhasDoacoesVoluntario.html")
+async function pageListEscolhasDoacoes(req, res){
+  const doacoes = req.query.cod_volunt ? await listDoacoesPendentes(req) : [];
+  return res.render("listEscolhasDoacoesVoluntario.html", {doacoes, cod_volunt: req.query.cod_volunt})
 }
 
 module.exports = {

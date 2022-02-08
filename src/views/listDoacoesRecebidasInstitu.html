@@ -19,100 +19,34 @@
 
   <body>
     <header>
-      <img src="/assets/logo.png" alt="" class="logo" />
+      <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
     </header>
 
     <p class="titulo">DOAÇÕES RECEBIDAS</p>
 
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
+    {% if doacoes == "" %}
+      <p class="noResults">Nenhuma doação encontrada!</p>
+    {% else %}
+      {% for doacao in doacoes %}
+        <div class="card">
+          <div class="divisoria1">
+            <p>{{doacao.descricao}}</p>
+          </div>
 
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
+          <div class="divisoria2">
+            <p>Quantidade: {{doacao.quantidade}}</p>
+          </div>
 
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
+          <div class="divisoria3">
+            <p>Doador: {{doacao.doador}}</p>
+          </div>
 
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
+          <div class="divisoria4">
+            <p>Voluntário: <br>{{doacao.voluntario}}</p>
+          </div>
+        </div>
+      {% endfor %}
+    {% endif %}
 
     <div class="margin-cards"></div>
   </body>

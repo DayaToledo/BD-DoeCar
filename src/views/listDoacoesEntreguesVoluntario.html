@@ -1,123 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      rel="stylesheet"
-      href="/styles/listDoacoesEntregues.css"
-    />
-    <title>DOECAR | Doações Entregues</title>
-  </head>
 
-  <body>
-    <header>
-      <img src="/assets/logo.png" alt="" class="logo" />
-      <a href="/listEscolhaDoacoes"><button class="botao-doar">ESCOLHER</button></a>
-      <a href="/listDonationAndamento"><button class="botao-doar">EM ANDAMENTO</button></a>
-      <a href="/listDonationEntregues"><button class="botao-doar">ENTREGUES</button></a>
-      
-    </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles/listDoacoesEntregues.css" />
+  <title>DOECAR | Doações Entregues</title>
+</head>
 
-    <p class="titulo">DOAÇÕES ENTREGUES</p>
+<body>
+  <header>
+    <a href="/"><a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a></a>
+    <a href='/listDonationEntregues?cod_volunt={{cod_volunt}}'><button class="botao-head botao-atual">ENTREGUES</button></a>
+    <a href='/listEscolhaDoacoes?cod_volunt={{cod_volunt}}'><button class="botao-head">ESCOLHER</button></a>
+    <a href='/listDonationAndamento?cod_volunt={{cod_volunt}}'><button class="botao-head">EM ANDAMENTO</button></a>
+  </header>
 
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
+  <p class="titulo">DOAÇÕES ENTREGUES</p>
+
+  {% if doacoes == "" %}
+    <p class="noResults">Nenhuma doação encontrada!</p>
+  {% else %}
+    {% for doacao in doacoes %}
+      <div class="cardEntregues">
+        <div class="divisoria1">
+          <p>
+            {{doacao.descricao}}<br>
+            Quantidade: {{doacao.quantidade}}
+          </p>
+        </div>
+
+        <div class="divisoria2">
+          <p>
+            Doador: {{doacao.doador}}<br>
+            {{doacao.rua_doacao}}, {{doacao.nro_doacao}}<br>
+            {{doacao.bairro_doacao}}
+          </p>
+        </div>
+
+        <div class="divisoria3">
+          <p>
+            Instituição: {{doacao.instituicao}}<br>
+            {{doacao.rua_instituicao}}, {{doacao.nro_instituicao}}<br>
+            {{doacao.bairro_instituicao}}
+          </p>
+        </div>
       </div>
+    {% endfor %}
+  {% endif %}
 
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
+  <div class="margin-cards"></div>
+</body>
 
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="card">
-      <div class="divisoria1">
-        <p>Descrição da doação</p>
-      </div>
-
-      <div class="divisoria2">
-        <p>Quantidade: 230</p>
-      </div>
-
-      <div class="divisoria3">
-        <p>Categoria: Roupas</p>
-      </div>
-
-      <div class="divisoria4">
-        <p>Instituição: Asilo</p>
-      </div>
-    </div>
-
-    <div class="margin-cards"></div>
-  </body>
 </html>
