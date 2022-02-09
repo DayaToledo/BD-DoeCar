@@ -20,7 +20,9 @@
   </header>
 
   <h1>DOAÇÃO</h1>
+  <div id="boxDataDoacao" class="boxData">
   <form method="POST" id="formDoacao">
+    <fieldset>
     <div class="boxInput">
       <label for="descricao">Descrição</label>
       <input type="text" id="descricao" name="descricao" />
@@ -48,8 +50,65 @@
         <option value="2">Instituição 2</option>
       </select>
     </div>
-  </form>
+
+    <div class="mobile-only">
+      <h3>Endereço de Recolhida</h3>
+      <div class="boxInput">
+        <label for="rua_doador">Rua</label>
+        <input type="text" name="rua_doador" id="rua_doador">
+      </div>
+      <div class="boxInput">
+        <label for="numero_doador">Número</label>
+        <input type="number" name="numero_doador" id="numero_doador">
+      </div>
+
+      <div class="boxInput">
+        <label for="bairro">Bairro</label>
+        <input type="text" name="bairro_doador" id="bairro_doador">
+      </div>
+
+      <div>
+        <input type = "checkbox" id = "enderecoPadrao" name = "endPadrao" value = "endPadrao">
+        <label for = "subscribeNews"> Utilizar endereço padrão do cadastro</label>
+      </div>
+    </div>
+
+    <div class="tempo">
+      <div class="boxInput">
+        <label for="tempo_doacao">Tempo disponível da doação</label>
+        <input type="date" name="tempo_doacao" id="tempo_doacao">
+      </div>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <div class="pc-only">
+      <h3>Endereço de Recolhida</h3>
+    <div class="boxInput">
+      <label for="rua_doador">Rua</label>
+      <input type="text" name="rua_doador" id="rua_doador">
+    </div>
+    <div class="boxInput">
+      <label for="numero_doador">Número</label>
+      <input type="number" name="numero_doador" id="numero_doador">
+    </div>
+
+    <div class="boxInput">
+      <label for="bairro">Bairro</label>
+      <input type="text" name="bairro_doador" id="bairro_doador">
+    </div>
+
+    <div class="boxCheckbox">
+      <input type = "checkbox" id = "enderecoPadrao" name = "endPadrao" value = "endPadrao">
+      <label for = "utilizarEnderecoPadrao"> Utilizar endereço padrão do cadastro</label>
+    </div>
+  </div>
   <button onclick="enviarForm()">CADASTRAR</button>
+
+  </fieldset>
+  </form>
+  </div>
+
 </body>
 
 </html>

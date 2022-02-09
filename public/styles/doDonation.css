@@ -1,13 +1,13 @@
 html,
 body {
+  display: flex;
   padding: 0;
   margin: 0;
-  background: #e8d3be;
-  font-family: "Roboto", sans-serif;
-  color: #505a5a;
+  background: #E8D3BE;
+  font-family: 'Roboto', sans-serif;
+  color: #505A5A;
   width: 100vw;
-  height: 100vh;
-  display: flex;
+  height: 100%;
   flex-direction: column;
 }
 
@@ -30,82 +30,157 @@ h1 {
   margin-top: 45px;
 }
 
-form {
-  width: 100%;
-  align-items: center;
-  justify-content: center;
-  margin-top: 2%;
+h3{
+  font-size: 18px;
+  text-align: center;
 }
 
-.boxInput,
-#boxSelector {
+.boxData {
+  width: 100%;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 80%;
+  height: 100%;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+}
+
+form > fieldset {
+  width: 50%;
+  border: none;
+  padding: 0px 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 7%;
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+.boxCheckbox {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  margin-top: 25px;
-  width: 100%;
+  margin-top: 15px;
+}
+
+#boxSelector {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
 }
 
 label {
-  font-size: 19px;
-  text-align: center;
+  font-size: 18px;
+  text-align: end;
 }
 
 input,
 select {
-  background-color: #ebf0ef;
-  width: 20%;
-  height: 31px;
-  align-self: center;
+  background-color: #EBF0EF;
+  width: 55%;
+  height: 30px;
+  align-self: flex-end;
   border: none;
   border-radius: 15px;
   margin-left: 15px;
   padding: 0 20px;
-  font: normal 15px "Roboto", sans-serif;
-  color: #505a5a;
+  font: normal 15px 'Roboto', sans-serif;
+  color: #505A5A;
 }
 
 #boxSelector > select {
-  width: 23%;
-  margin-left: 21px;
-  border-right: 20px solid #ebf0ef;
+  background-color: #EBF0EF;
+  width: 55%;
+  height: 30px;
+  align-self: flex-end;
+  border: none;
+  border-radius: 15px;
+  margin-left: 15px;
+  padding: 0 20px;
+  font: normal 15px 'Roboto', sans-serif;
+  color: #505A5A;
 }
 
 button {
-  background-color: #8ab4cd;
-  color: #ebf0ef;
+  background-color: #8AB4CD;
+  color: #EBF0EF;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 19px;
   border: none;
-  border-radius: 25px;
-  height: 45px;
-  width: 210px;
-  margin-top: 4%;
-  margin-left: 47%;
+  border-radius: 20px;
+  height: 40px;
+  width: 180px;
+  align-self: flex-end;
+  margin-top: 40px;
   cursor: pointer;
 }
 
 button:hover {
   background-color: #df7b63;
 }
+.mobile-only{
+  display: none;
+}
 
-@media (max-width: 720px) {
-  input {
-    width: 30%;
+.tempo{
+  margin-top: 2em;
+}
+
+@media(max-width: 720px) {
+  body{
+    display: block;
+  }
+
+  .mobile-only{
+    display: block;
+    margin-top: 2em;
+  }
+
+  .pc-only{
+    display: none;
+  }
+
+  #boxSelector {
+    flex-direction: row;
+    height: 180px;
   }
 
   #boxSelector > select {
-    width: 37%;
-    margin-left: 21px;
+    margin-bottom: 1.5rem;
   }
 
-  button {
-    font-size: 18px;
-    border: none;
-    height: 35px;
-    width: 175px;
-    margin-top: 8%;
-    margin-left: 38%;
+  #boxSelector > label {
+    margin-bottom: 10px;
+  }
+
+  form {
+    height: calc(100% - 100px);
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  form > fieldset {
+    width: 90%;
+    padding: 40px 0px 0px 0px;
+  }
+
+  label {
+    font-size: 15px;
   }
 }
