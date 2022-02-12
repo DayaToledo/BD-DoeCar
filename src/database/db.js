@@ -65,6 +65,7 @@ async function execute(db) {
           bairro TEXT,
           data_criacao TEXT,
           disponivel_ate TEXT,
+          endereco_padrao INTEGER,
           status TEXT,
           FOREIGN KEY (cod_categ) REFERENCES categoria(cod_categ),
           FOREIGN KEY (cod_doador) REFERENCES doador(cod_doador),

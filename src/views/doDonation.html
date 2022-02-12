@@ -21,92 +21,92 @@
 
   <h1>DOAÇÃO</h1>
   <div id="boxDataDoacao" class="boxData">
-  <form method="POST" id="formDoacao">
-    <fieldset>
-    <div class="boxInput">
-      <label for="descricao">Descrição</label>
-      <input type="text" id="descricao" name="descricao" />
-    </div>
+    <form method="POST" id="formDoacao">
+      <fieldset>
+        <div class="boxInput">
+          <label for="descricao">Descrição</label>
+          <input type="text" id="descricao" name="descricao" />
+        </div>
 
-    <div id="boxSelector">
-      <label for="cod_categ">Categoria</label>
-      <select id="cod_categ" name="cod_categ">
-        <option value=""></option>
-        <option value="1">Categoria 1</option>
-        <option value="2">Categoria 2</option>
-      </select>
-    </div>
+        <div id="boxSelector">
+          <label for="cod_categ">Categoria</label>
+          <select id="cod_categ" name="cod_categ">
+            <option value=""></option>
+            <option value="1">Categoria 1</option>
+            <option value="2">Categoria 2</option>
+          </select>
+        </div>
 
-    <div class="boxInput">
-      <label for="quantidade">Quantidade</label>
-      <input type="number" name="quantidade" id="quantidade" />
-    </div>
+        <div class="boxInput">
+          <label for="quantidade">Quantidade</label>
+          <input type="number" name="quantidade" id="quantidade" />
+        </div>
 
-    <div id="boxSelector">
-      <label for="cod_institu">Instituição</label>
-      <select id="cod_institu" name="cod_institu">
-        <option value=""></option>
-        <option value="1">Instituição 1</option>
-        <option value="2">Instituição 2</option>
-      </select>
-    </div>
+        <div id="boxSelector">
+          <label for="cod_institu">Instituição</label>
+          <select id="cod_institu" name="cod_institu">
+            <option value=""></option>
+            <option value="1">Instituição 1</option>
+            <option value="2">Instituição 2</option>
+          </select>
+        </div>
 
-    <div class="mobile-only">
-      <h3>Endereço de Recolhida</h3>
-      <div class="boxInput">
-        <label for="rua_doador">Rua</label>
-        <input type="text" name="rua_doador" id="rua_doador">
-      </div>
-      <div class="boxInput">
-        <label for="numero_doador">Número</label>
-        <input type="number" name="numero_doador" id="numero_doador">
-      </div>
+        <div class="mobile-only">
+          <h3>Endereço de Recolhida</h3>
+          <div class="boxInput">
+            <label for="rua_doacao">Rua</label>
+            <input type="text" name="rua_doacao" id="rua_doacao">
+          </div>
+          <div class="boxInput">
+            <label for="numero_doacao">Número</label>
+            <input type="number" name="numero_doacao" id="numero_doacao">
+          </div>
 
-      <div class="boxInput">
-        <label for="bairro">Bairro</label>
-        <input type="text" name="bairro_doador" id="bairro_doador">
-      </div>
+          <div class="boxInput">
+            <label for="bairro_doacao">Bairro</label>
+            <input type="text" name="bairro_doacao" id="bairro_doacao">
+          </div>
 
-      <div>
-        <input type = "checkbox" id = "enderecoPadrao" name = "endPadrao" value = "endPadrao">
-        <label for = "subscribeNews"> Utilizar endereço padrão do cadastro</label>
-      </div>
-    </div>
+          <div>
+            <input type="checkbox" id="endereco_padrao" name="endereco_padrao" value="1">
+            <label for="endereco_padrao"> Utilizar endereço padrão do cadastro</label>
+          </div>
+        </div>
 
-    <div class="tempo">
-      <div class="boxInput">
-        <label for="tempo_doacao">Tempo disponível da doação</label>
-        <input type="date" name="tempo_doacao" id="tempo_doacao">
-      </div>
-    </div>
-  </fieldset>
+        <div class="tempo">
+          <div class="boxInput">
+            <label for="tempo_doacao">Tempo disponível da doação</label>
+            <input type="date" name="tempo_doacao" id="tempo_doacao">
+          </div>
+        </div>
+      </fieldset>
 
-  <fieldset>
-    <div class="pc-only">
-      <h3>Endereço de Recolhida</h3>
-    <div class="boxInput">
-      <label for="rua_doador">Rua</label>
-      <input type="text" name="rua_doador" id="rua_doador">
-    </div>
-    <div class="boxInput">
-      <label for="numero_doador">Número</label>
-      <input type="number" name="numero_doador" id="numero_doador">
-    </div>
+      <fieldset>
+        <div class="pc-only">
+          <h3>Endereço de Recolhida</h3>
+          <div class="boxInput">
+            <label for="rua_doacao_pc">Rua</label>
+            <input type="text" name="rua_doacao_pc" id="rua_doacao_pc">
+          </div>
+          <div class="boxInput">
+            <label for="numero_doacao_pc">Número</label>
+            <input type="number" name="numero_doacao_pc" id="numero_doacao_pc">
+          </div>
 
-    <div class="boxInput">
-      <label for="bairro">Bairro</label>
-      <input type="text" name="bairro_doador" id="bairro_doador">
-    </div>
+          <div class="boxInput">
+            <label for="bairro_doacao_pc">Bairro</label>
+            <input type="text" name="bairro_doacao_pc" id="bairro_doacao_pc">
+          </div>
 
-    <div class="boxCheckbox">
-      <input type = "checkbox" id = "enderecoPadrao" name = "endPadrao" value = "endPadrao">
-      <label for = "utilizarEnderecoPadrao"> Utilizar endereço padrão do cadastro</label>
-    </div>
-  </div>
-  <button onclick="enviarForm()">CADASTRAR</button>
+          <div class="boxCheckbox">
+            <input type="checkbox" id="endereco_padrao_pc" name="endereco_padrao_pc" value="1">
+            <label for="endereco_padrao_pc"> Utilizar endereço padrão do cadastro</label>
+          </div>
+        </div>
+        <button type="button" onclick="enviarForm()">CADASTRAR</button>
+      </fieldset>
+    </form>
 
-  </fieldset>
-  </form>
   </div>
 
 </body>
@@ -128,8 +128,8 @@
   }
 
   function enviarForm() {
-    const user = JSON.parse(sessionStorage.getItem('USER'));
     const data = serializeJSON("#formDoacao");
+    const user = JSON.parse(sessionStorage.getItem('USER'));
     console.log(user)
     data.rua = user.rua;
     data.numero = user.nro;
@@ -138,10 +138,15 @@
 
     console.log(data);
     $.ajax({
-      type: "POST",
-      data,
       url: "/saveDoacao",
-      cache: false,
-    });
+      type: 'POST',
+      data,
+    })
+      .done(function (msg) {
+        window.location = `/listDonation?cod_doador=${user.cod_doador}`;
+      })
+      .fail(function (jqXHR, textStatus, msg) {
+        alert(msg);
+      });
   }
 </script>

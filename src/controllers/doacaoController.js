@@ -9,8 +9,21 @@ async function register(req, res) {
   //adicionar dados a lista de doacoes
   console.log(req.body)
 
+  let rua;
+  let numero;
+  let bairro;
+  if (parseInt(req.body.endereco_padrao)) {
+    rua = req.body.rua;
+    numero = req.body.numero;
+    bairro = req.body.bairro;
+  } else {
+    rua = req.body.rua_doacao_pc !== "" ? req.body.rua_doacao_pc : req.body.rua_doacao;
+    numero = req.body.numero_doacao_pc !== "" ? req.body.numero_doacao_pc : req.body.numero_doacao;
+    bairro = req.body.bairro_doacao_pc !== "" ? req.body.bairro_doacao_pc : req.body.bairro_doacao;
+  }
+
   const data = new Date()
-  const data_criacao = adicionaZero(data.getDate()) + "/" + adicionaZero(data.getMonth()) + "/" + adicionaZero(data.getFullYear())
+  const data_criacao = adicionaZero(data.getFullYear()) + "-" + adicionaZero(data.getMonth()) + "-" + adicionaZero(data.getDate())
 
   const doacaoValue = {
     descricao: req.body.descricao,
@@ -18,18 +31,19 @@ async function register(req, res) {
     cod_categ: parseInt(req.body.cod_categ),
     cod_doador: parseInt(req.body.cod_doador),
     cod_institu: parseInt(req.body.cod_institu),
-    rua: req.body.rua,
-    numero: req.body.numero,
-    bairro: req.body.bairro,
+    rua,
+    numero,
+    bairro,
     data_criacao,
-    disponivel_ate: req.body.disponivel_ate
+    disponivel_ate: req.body.tempo_doacao,
+    endereco_padrao: parseInt(req.body.endereco_padrao) || 0
   };
 
   try {
     const db = await Database
     await createDoacao(db, { doacaoValue })
 
-    return res.redirect("/listDonation")
+    if (res) return res.status(200).json("Sucesso ao cadastrar!")
   } catch (error) {
     console.log(error)
   }
