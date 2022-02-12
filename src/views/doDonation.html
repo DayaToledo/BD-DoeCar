@@ -32,8 +32,9 @@
           <label for="cod_categ">Categoria</label>
           <select id="cod_categ" name="cod_categ">
             <option value=""></option>
-            <option value="1">Categoria 1</option>
-            <option value="2">Categoria 2</option>
+            {% for categoria in categorias %}
+            <option value={{categoria.cod_categ}}>{{categoria.descricao}}</option>
+            {% endfor %}
           </select>
         </div>
 
@@ -46,8 +47,9 @@
           <label for="cod_institu">Instituição</label>
           <select id="cod_institu" name="cod_institu">
             <option value=""></option>
-            <option value="1">Instituição 1</option>
-            <option value="2">Instituição 2</option>
+            {% for instituicao in instituicoes %}
+            <option value={{instituicao.cod_institu}}>{{instituicao.nome}}</option>
+            {% endfor %}
           </select>
         </div>
 

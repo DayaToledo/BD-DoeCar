@@ -36,6 +36,27 @@ async function register(req, res) {
   }
 }
 
+async function listAll(req, res) {
+  try {
+    const db = await Database
+
+    const instituicoes = await db.all(`
+      SELECT
+        cod_institu,
+        instituicao.nome
+      FROM instituicao
+    `)
+
+    console.log(instituicoes)
+    if (res) return res.status(200).json(instituicoes)
+    else return instituicoes
+  } catch (error) {
+    console.log(error)
+    if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+  }
+}
+
 module.exports = {
   register,
+  listAll,
 }

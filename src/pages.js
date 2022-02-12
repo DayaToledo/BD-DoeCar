@@ -1,3 +1,5 @@
+const Instituicao = require('./controllers/instituicaoController')
+const Categoria = require('./controllers/categoriaController')
 const {
   listDoacoesFeitas,
   listDoacoesRecebidas,
@@ -5,6 +7,7 @@ const {
   listDoacoesEntregues,
   listDoacoesPendentes
 } = require('./controllers/doacaoController')
+
 
 function pageLanding(req, res){
     return res.render("index.html")
@@ -18,8 +21,10 @@ function pageLogin(req, res){
   return res.render("login.html")
 }
 
-function pageDoDonation(req, res){
-  return res.render("doDonation.html")
+async function pageDoDonation(req, res){
+  const instituicoes = await Instituicao.listAll();
+  const categorias = await Categoria.listAll();
+  return res.render("doDonation.html", {instituicoes, categorias})
 }
 
 async function pageListDoacoes(req, res){
