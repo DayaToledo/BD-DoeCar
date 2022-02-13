@@ -36,4 +36,7 @@ router.post("/saveVoluntario", Voluntario.register)
 
 router.post("/verifyLogin", Login.login)
 
+router.put("/chooseDoacao", Doacao.addVoluntarioInDoacao)
+router.put("/finalizeDoacao", Doacao.finalizeDoacao)
+
 module.exports = { router };

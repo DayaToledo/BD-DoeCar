@@ -73,6 +73,8 @@ async function execute(db) {
           FOREIGN KEY (cod_institu) REFERENCES instituicao(cod_institu),
           FOREIGN KEY (cod_volunt) REFERENCES voluntario(cod_volunt)
         );
+
+
   `)
 }
 

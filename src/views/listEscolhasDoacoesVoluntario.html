@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles/listDoacoesEntregues.css" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
   <title>DOECAR | Doações a Escolher</title>
 </head>
 
@@ -23,41 +25,61 @@
   <p class="titulo">DOAÇÕES A ESCOLHER</p>
 
   {% if doacoes == "" %}
-    <p class="noResults">Nenhuma doação encontrada!</p>
+  <p class="noResults">Nenhuma doação encontrada!</p>
   {% else %}
-    {% for doacao in doacoes %}
-      <div class="card">
-        <div class="divisoria1">
-          <p>
-            {{doacao.descricao}}<br>
-            Quantidade: {{doacao.quantidade}}
-          </p>
-        </div>
+  {% for doacao in doacoes %}
+  <div class="card">
+    <div class="divisoria1">
+      <p>
+        {{doacao.descricao}}<br>
+        Quantidade: {{doacao.quantidade}}
+      </p>
+    </div>
 
-        <div class="divisoria2">
-          <p>
-            Doador: {{doacao.doador}}<br>
-            {{doacao.rua_doacao}}, {{doacao.nro_doacao}}<br>
-            {{doacao.bairro_doacao}}
-          </p>
-        </div>
+    <div class="divisoria2">
+      <p>
+        Doador: {{doacao.doador}}<br>
+        {{doacao.rua_doacao}}, {{doacao.nro_doacao}}<br>
+        {{doacao.bairro_doacao}}
+      </p>
+    </div>
 
-        <div class="divisoria3">
-          <p>
-            Instituição: {{doacao.instituicao}}<br>
-            {{doacao.rua_instituicao}}, {{doacao.nro_instituicao}}<br>
-            {{doacao.bairro_instituicao}}
-          </p>
-        </div>
+    <div class="divisoria3">
+      <p>
+        Instituição: {{doacao.instituicao}}<br>
+        {{doacao.rua_instituicao}}, {{doacao.nro_instituicao}}<br>
+        {{doacao.bairro_instituicao}}
+      </p>
+    </div>
 
-        <div class="divisoria4">
-          <p><button class="botao-escolher">ESCOLHER</button></p>
-        </div>
-      </div>
-    {% endfor %}
+    <div class="divisoria4">
+      <p><button type="button" value={{doacao.cod_doacao}} onclick="escolheDoacao(this.value)" class="botao-escolher">ESCOLHER</button></p>
+    </div>
+  </div>
+  {% endfor %}
   {% endif %}
 
   <div class="margin-cards"></div>
 </body>
 
 </html>
+
+<script>
+  function escolheDoacao(cod_doacao) {
+    const user = JSON.parse(sessionStorage.getItem('USER'));
+    // console.log(user);
+    // console.log(cod_doacao);
+
+    $.ajax({
+      url: "/chooseDoacao",
+      type: 'PUT',
+      data: `cod_volunt=${user.cod_volunt}&cod_doacao=${cod_doacao}`,
+    })
+      .done(function (msg) {
+        window.location = `/listEscolhaDoacoes?cod_volunt=${user.cod_volunt}`;
+      })
+      .fail(function (jqXHR, textStatus, msg) {
+        alert(msg);
+      });
+  }
+</script>

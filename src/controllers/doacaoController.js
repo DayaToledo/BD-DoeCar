@@ -50,10 +50,12 @@ async function register(req, res) {
     const db = await Database
     await createDoacao(db, { doacaoValue })
 
-    if (res) return res.status(200).json("Sucesso ao cadastrar!")
+    if (res) return res.status(200).json({ msg: 'Sucesso ao cadastrar!' })
+    else return { msg: 'Sucesso ao cadastrar!' }
   } catch (error) {
     console.log(error)
-    if (res) return res.status(500).json("Erro ao cadastrar!")
+    if (res) return res.status(500).json({ msg: 'Erro ao cadastrar!' })
+    else throw error
   }
 }
 
@@ -82,6 +84,7 @@ async function listDoacoesFeitas(req, res) {
   } catch (error) {
     console.log(error)
     if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
   }
 }
 
@@ -110,18 +113,20 @@ async function listDoacoesRecebidas(req, res) {
   } catch (error) {
     console.log(error)
     if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
   }
 }
 
 async function listDoacoesEmAndamento(req, res) {
   const { cod_volunt } = req.query
-  console.log(`Código da voluntário: ${cod_volunt}`)
+  console.log(`Código do voluntário: ${cod_volunt}`)
 
   try {
     const db = await Database
 
     const doacoes = await db.all(`
       SELECT
+        doacao.cod_doacao,
         doacao.descricao,
         doacao.quantidade,
         doador.nome AS "doador",
@@ -144,18 +149,20 @@ async function listDoacoesEmAndamento(req, res) {
   } catch (error) {
     console.log(error)
     if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
   }
 }
 
 async function listDoacoesEntregues(req, res) {
   const { cod_volunt } = req.query
-  console.log(`Código da voluntário: ${cod_volunt}`)
+  console.log(`Código do voluntário: ${cod_volunt}`)
 
   try {
     const db = await Database
 
     const doacoes = await db.all(`
       SELECT
+        doacao.cod_doacao,
         doacao.descricao,
         doacao.quantidade,
         doador.nome AS "doador",
@@ -178,18 +185,20 @@ async function listDoacoesEntregues(req, res) {
   } catch (error) {
     console.log(error)
     if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
   }
 }
 
 async function listDoacoesPendentes(req, res) {
   const { cod_volunt } = req.query
-  console.log(`Código da voluntário: ${cod_volunt}`)
+  console.log(`Código do voluntário: ${cod_volunt}`)
 
   try {
     const db = await Database
 
     const doacoes = await db.all(`
       SELECT
+        doacao.cod_doacao,
         doacao.descricao,
         doacao.quantidade,
         doador.nome AS "doador",
@@ -212,6 +221,56 @@ async function listDoacoesPendentes(req, res) {
   } catch (error) {
     console.log(error)
     if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
+  }
+}
+
+async function addVoluntarioInDoacao(req, res) {
+  const { cod_volunt, cod_doacao } = req.body
+  console.log(`Código do voluntário: ${cod_volunt}`)
+  console.log(`Código da doação: ${cod_doacao}`)
+
+  try {
+    const db = await Database
+
+    await db.run(`
+      UPDATE doacao
+      SET
+        cod_volunt = ${cod_volunt},
+        status = "Em andamento"
+      WHERE cod_doacao = ${cod_doacao};
+    `)
+
+    if (res) return res.status(200).json({ msg: 'Atualizado com sucesso!' })
+    else return { msg: 'Atualizado com sucesso!' }
+  } catch (error) {
+    console.log(error)
+    if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
+  }
+}
+
+async function finalizeDoacao(req, res) {
+  const { cod_volunt, cod_doacao } = req.body
+  console.log(`Código do voluntário: ${cod_volunt}`)
+  console.log(`Código da doação: ${cod_doacao}`)
+
+  try {
+    const db = await Database
+
+    await db.run(`
+      UPDATE doacao
+      SET status = "Entregue"
+      WHERE cod_doacao = ${cod_doacao}
+      AND cod_volunt = ${cod_volunt};
+    `)
+
+    if (res) return res.status(200).json({ msg: 'Atualizado com sucesso!' })
+    else return { msg: 'Atualizado com sucesso!' }
+  } catch (error) {
+    console.log(error)
+    if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    else throw error
   }
 }
 
@@ -222,4 +281,6 @@ module.exports = {
   listDoacoesEmAndamento,
   listDoacoesEntregues,
   listDoacoesPendentes,
+  addVoluntarioInDoacao,
+  finalizeDoacao,
 }
