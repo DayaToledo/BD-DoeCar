@@ -64,6 +64,7 @@ async function execute(db) {
           nro TEXT,
           bairro TEXT,
           data_criacao TEXT,
+          disponivel_de TEXT,
           disponivel_ate TEXT,
           endereco_padrao INTEGER,
           status TEXT,

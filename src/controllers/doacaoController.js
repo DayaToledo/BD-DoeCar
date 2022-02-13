@@ -5,6 +5,13 @@ function adicionaZero(numero) {
   return numero < 9 ? `0${numero}` : `${numero}`
 }
 
+function getDataAtual() {
+  const newData = new Date()
+  const data = adicionaZero(newData.getFullYear()) + "-" + adicionaZero(newData.getMonth()+1) + "-" + adicionaZero(newData.getDate())
+  const time = adicionaZero(newData.getHours()) + ":" + adicionaZero(newData.getMinutes())
+  return `${data}T${time}`
+}
+
 async function register(req, res) {
   //adicionar dados a lista de doacoes
   console.log(req.body)
@@ -17,13 +24,12 @@ async function register(req, res) {
     numero = req.body.numero;
     bairro = req.body.bairro;
   } else {
-    rua = req.body.rua_doacao_pc !== "" ? req.body.rua_doacao_pc : req.body.rua_doacao;
-    numero = req.body.numero_doacao_pc !== "" ? req.body.numero_doacao_pc : req.body.numero_doacao;
-    bairro = req.body.bairro_doacao_pc !== "" ? req.body.bairro_doacao_pc : req.body.bairro_doacao;
+    rua = req.body.rua_doacao;
+    numero = req.body.numero_doacao;
+    bairro = req.body.bairro_doacao;
   }
 
-  const data = new Date()
-  const data_criacao = adicionaZero(data.getFullYear()) + "-" + adicionaZero(data.getMonth()) + "-" + adicionaZero(data.getDate())
+  const data_criacao = getDataAtual();
 
   const doacaoValue = {
     descricao: req.body.descricao,
@@ -35,7 +41,8 @@ async function register(req, res) {
     numero,
     bairro,
     data_criacao,
-    disponivel_ate: req.body.tempo_doacao,
+    disponivel_de: req.body.tempo_doacao[0] || data_criacao,
+    disponivel_ate: req.body.tempo_doacao[1] || null,
     endereco_padrao: parseInt(req.body.endereco_padrao) || 0
   };
 
@@ -46,6 +53,7 @@ async function register(req, res) {
     if (res) return res.status(200).json("Sucesso ao cadastrar!")
   } catch (error) {
     console.log(error)
+    if (res) return res.status(500).json("Erro ao cadastrar!")
   }
 }
 

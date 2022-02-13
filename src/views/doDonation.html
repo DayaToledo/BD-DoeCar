@@ -92,22 +92,22 @@
         <div class="pc-only">
           <h3>Endereço de Recolhida</h3>
           <div class="boxInput">
-            <label for="rua_doacao_pc">Rua</label>
-            <input type="text" name="rua_doacao_pc" id="rua_doacao_pc">
+            <label for="rua_doacao">Rua</label>
+            <input type="text" name="rua_doacao" id="rua_doacao">
           </div>
           <div class="boxInput">
-            <label for="numero_doacao_pc">Número</label>
-            <input type="number" name="numero_doacao_pc" id="numero_doacao_pc">
+            <label for="numero_doacao">Número</label>
+            <input type="number" name="numero_doacao" id="numero_doacao">
           </div>
 
           <div class="boxInput">
-            <label for="bairro_doacao_pc">Bairro</label>
-            <input type="text" name="bairro_doacao_pc" id="bairro_doacao_pc">
+            <label for="bairro_doacao">Bairro</label>
+            <input type="text" name="bairro_doacao" id="bairro_doacao">
           </div>
 
           <div class="boxCheckbox">
-            <input type="checkbox" id="endereco_padrao_pc" name="endereco_padrao_pc" value="1">
-            <label for="endereco_padrao_pc"> Utilizar endereço padrão do cadastro</label>
+            <input type="checkbox" id="endereco_padrao" name="endereco_padrao" value="1">
+            <label for="endereco_padrao"> Utilizar endereço padrão do cadastro</label>
           </div>
         </div>
         <button type="button" onclick="enviarForm()">CADASTRAR</button>
@@ -120,6 +120,9 @@
 
 </html>
 <script>
+  const user = JSON.parse(sessionStorage.getItem('USER'));
+  // console.log(user)
+
   function serializeJSON(form) {
     var json = {};
     $(form).serializeArray().forEach(function (item) {
@@ -136,8 +139,6 @@
 
   function enviarForm() {
     const data = serializeJSON("#formDoacao");
-    const user = JSON.parse(sessionStorage.getItem('USER'));
-    console.log(user)
     data.rua = user.rua;
     data.numero = user.nro;
     data.bairro = user.bairro;
@@ -157,22 +158,22 @@
       });
   }
 
-  var rua_usr = "Rua";            /* Inserir Rua */
-  var num_usr = Number("0123");   /* Inserir Número */
-  var bairro_usr = "Bairro";      /* Inserir Bairro */
+  var rua_usr = user.rua;            /* Inserir Rua */
+  var num_usr = Number(user.nro);    /* Inserir Número */
+  var bairro_usr = user.bairro;      /* Inserir Bairro */
 
   /* Alterar seletor name conforme o nome do input */
 
   var fillForm = function (rua, num, bairro) {
-    $('input[name="rua_doacao_pc"]').val(rua).prop('disabled', true);
-    $('input[name="numero_doacao_pc"]').val(num).prop('disabled', true);
-    $('input[name="bairro_doacao_pc"]').val(bairro).prop('disabled', true);
+    $('input[name="rua_doacao"]').val(rua).prop('disabled', true);
+    $('input[name="numero_doacao"]').val(num).prop('disabled', true);
+    $('input[name="bairro_doacao"]').val(bairro).prop('disabled', true);
   };
 
   var unfillForm = function () {
-    $('input[name="rua_doacao_pc"]').val("").prop('disabled', false);
-    $('input[name="numero_doacao_pc"]').val("").prop('disabled', false);
-    $('input[name="bairro_doacao_pc"]').val("").prop('disabled', false);
+    $('input[name="rua_doacao"]').val("").prop('disabled', false);
+    $('input[name="numero_doacao"]').val("").prop('disabled', false);
+    $('input[name="bairro_doacao"]').val("").prop('disabled', false);
   };
 
   $(document).ready(function () {

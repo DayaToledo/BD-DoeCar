@@ -69,11 +69,11 @@ const main = async () => {
     await db.run(`
       INSERT INTO doacao (descricao, quantidade, cod_categ, cod_doador, cod_institu, cod_volunt, rua, nro, bairro, data_criacao, disponivel_ate, status)
       VALUES
-        ("Doação de blusas",  6, 2, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13", "2021-06-03", "Entregue"),
-        ("Doação de arroz",   2, 1, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13", "2021-08-02", "Entregue"),
-        ("Doação de feijão",  5, 1, 2, 3, null, "Rua Pernambuco", 986, "Bairro Piauí",      "2021-05-13", "2021-10-09", "Pendente"),
-        ("Doação de sapato",  2, 3, 1, 2, null, "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13", "2021-06-18", "Pendente"),
-        ("Doação de sabão",   6, 5, 1, 4, 1,    "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13", "2021-12-15", "Em andamento");
+        ("Doação de blusas",  6, 2, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13T14:42", "2021-05-13T14:42", "2021-06-03T14:42", "Entregue"),
+        ("Doação de arroz",   2, 1, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13T14:42", "2021-05-13T14:42", "2021-08-02T14:42", "Entregue"),
+        ("Doação de feijão",  5, 1, 2, 3, null, "Rua Pernambuco", 986, "Bairro Piauí",      "2021-05-13T14:42", "2021-05-13T14:42", "2021-10-09T14:42", "Pendente"),
+        ("Doação de sapato",  2, 3, 1, 2, null, "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2021-06-18T14:42", "Pendente"),
+        ("Doação de sabão",   6, 5, 1, 4, 1,    "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2021-12-15T14:42", "Em andamento");
     `)
 
     return Promise.resolve("As tabelas estavam vazias e todas foram populadas!");
