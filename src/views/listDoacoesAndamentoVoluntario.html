@@ -33,7 +33,13 @@
     <div class="divisoria1">
       <p>
         {{doacao.descricao}}<br>
-        Quantidade: {{doacao.quantidade}}
+        Quantidade: {{doacao.quantidade}}<br>
+        Data limite:
+        {% if doacao.disponivel_ate != 'null' %}
+          {{doacao.disponivel_ate.replace("T", " ")}}
+        {% else %}
+          nenhuma
+        {% endif %}
       </p>
     </div>
 

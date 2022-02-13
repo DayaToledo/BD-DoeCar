@@ -8,7 +8,7 @@ async function listAll(req, res) {
       SELECT * FROM categoria
     `)
 
-    console.log(categorias)
+    // console.log(categorias)
     if (res) return res.status(200).json(categorias)
     else return categorias
   } catch (error) {

@@ -74,7 +74,15 @@ async function execute(db) {
           FOREIGN KEY (cod_volunt) REFERENCES voluntario(cod_volunt)
         );
 
-
+        CREATE TRIGGER IF NOT EXISTS update_doador_address AFTER UPDATE ON doador
+          BEGIN
+            UPDATE doacao SET
+              rua = new.rua,
+              nro = new.nro,
+              bairro = new.bairro
+            WHERE cod_doador = new.cod_doador
+              AND endereco_padrao = 1;
+          END;
   `)
 }
 

@@ -6,6 +6,7 @@
   "author": "DayaToledo <dayanabritotoledo_@hotmail.com>",
   "license": "MIT",
   "dependencies": {
+    "cron": "^1.8.2",
     "express": "^4.17.1",
     "nunjucks": "^3.2.3",
     "sqlite-async": "^1.1.2"
