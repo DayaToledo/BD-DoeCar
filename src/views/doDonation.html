@@ -76,9 +76,14 @@
         </div>
 
         <div class="tempo">
+          <h3>Tempo disponível da doação</h3>
           <div class="boxInput">
-            <label for="tempo_doacao">Tempo disponível da doação</label>
-            <input type="date" name="tempo_doacao" id="tempo_doacao">
+            <label for="tempo_doacao">De</label>
+            <input type="datetime-local" name="tempo_doacao" id="tempo_doacao">
+          </div>
+          <div class="boxInput">
+            <label for="tempo_doacao">até</label>
+            <input type="datetime-local" name="tempo_doacao" id="tempo_doacao">
           </div>
         </div>
       </fieldset>
@@ -151,4 +156,34 @@
         alert(msg);
       });
   }
+
+  var rua_usr = "Rua";            /* Inserir Rua */
+  var num_usr = Number("0123");   /* Inserir Número */
+  var bairro_usr = "Bairro";      /* Inserir Bairro */
+
+  /* Alterar seletor name conforme o nome do input */
+
+  var fillForm = function (rua, num, bairro) {
+    $('input[name="rua_doacao_pc"]').val(rua).prop('disabled', true);
+    $('input[name="numero_doacao_pc"]').val(num).prop('disabled', true);
+    $('input[name="bairro_doacao_pc"]').val(bairro).prop('disabled', true);
+  };
+
+  var unfillForm = function () {
+    $('input[name="rua_doacao_pc"]').val("").prop('disabled', false);
+    $('input[name="numero_doacao_pc"]').val("").prop('disabled', false);
+    $('input[name="bairro_doacao_pc"]').val("").prop('disabled', false);
+  };
+
+  $(document).ready(function () {
+    $('input[type="checkbox"]').click(function () {
+      if ($(this).is(":checked")) {
+        fillForm(rua_usr, num_usr, bairro_usr);
+      }
+      else if ($(this).is(":not(:checked)")) {
+        unfillForm();
+      }
+    });
+  });
+
 </script>
