@@ -2,6 +2,7 @@ const { Router } = require('express');
 const router = Router();
 
 const {
+  pageProfile,
   pageLanding,
   pageRegister,
   pageLogin,
@@ -22,7 +23,9 @@ const Login = require('./controllers/loginController')
 router.get("/", pageLanding)
 router.get("/register", pageRegister)
 router.get("/login", pageLogin)
+router.get("/profile", pageProfile)
 router.get("/do-donation", pageDoDonation)
+
 router.get("/listDonation", pageListDoacoes)
 router.get("/listDonationRecebidas", pageListDoacoesRecebidas)
 router.get("/listDonationEntregues", pageListDoacoesEntregues)
@@ -35,8 +38,10 @@ router.post("/saveInstituicao", Instituicao.register)
 router.post("/saveVoluntario", Voluntario.register)
 
 router.post("/verifyLogin", Login.login)
+router.post("/updateEndereco", Doador.update)
 
 router.put("/chooseDoacao", Doacao.addVoluntarioInDoacao)
 router.put("/finalizeDoacao", Doacao.finalizeDoacao)
+
 
 module.exports = { router };

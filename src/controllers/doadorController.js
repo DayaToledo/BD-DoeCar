@@ -39,6 +39,31 @@ async function register(req, res) {
   }
 }
 
+async function update(req, res) {
+  console.log(req.body)
+
+  try {
+    const db = await Database
+
+    await db.run(`
+      UPDATE doador
+      SET
+        rua = '${req.body.rua}',
+        nro = '${req.body.numero}',
+        bairro = '${req.body.bairro}'
+      WHERE cod_doador = ${req.body.cod_doador};
+    `)
+
+    if (res) return res.status(200).json({ msg: 'Atualizado com sucesso!' })
+    else return { msg: 'Atualizado com sucesso!' }
+  } catch (error) {
+    console.log(error)
+    if (res) return res.status(500).json({ msg: 'UPDATE ERROR' })
+    else throw error
+  }
+}
+
 module.exports = {
   register,
+  update,
 }

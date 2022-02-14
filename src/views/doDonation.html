@@ -164,7 +164,7 @@
   var num_usr = Number(user.nro);    /* Inserir Número */
   var bairro_usr = user.bairro;      /* Inserir Bairro */
 
-  /* Alterar seletor name conforme o nome do input */
+  /* Alterar conteudo do seletor conforme está selecionado ou não o checkbox */
 
   var fillForm = function (rua, num, bairro) {
     $('input[name="rua_doacao"]').val(rua).prop('disabled', true);

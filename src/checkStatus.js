@@ -1,4 +1,4 @@
-const Database = require('../src/database/index')
+const Database = require('../src/database/db')
 
 async function checkStatus() {
   try {

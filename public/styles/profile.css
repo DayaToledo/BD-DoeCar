@@ -1,0 +1,127 @@
+html,
+body {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  background: #E8D3BE;
+  font-family: 'Roboto', sans-serif;
+  color: #505A5A;
+  width: 100vw;
+  height: 100%;
+  flex-direction: column;
+}
+
+header {
+  width: 100%;
+  height: 90px;
+  background: #DF7B63;
+}
+
+.logo {
+  width: 75px;
+  height: 75px;
+  margin-top: 5px;
+  margin-left: 47%;
+}
+
+.boxData {
+  width: 100%;
+  height: calc(100% - 90px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form {
+  width: 80%;
+  height: 100%;
+  margin-top: 4rem;
+  display: flex;
+  flex-direction: row;
+}
+
+form > fieldset {
+  width: 50%;
+  border: none;
+  padding: 0px 10px 15px 15px;
+  display: flex;
+  flex-direction: column;
+  margin-right: 7%;
+}
+
+.boxInput {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 15px;
+}
+
+label {
+  font-size: 18px;
+  text-align: end;
+}
+
+p {
+  font: bold 20px 'Roboto', sans-serif;
+  color: #505A5A;
+  text-align: center;
+}
+
+input,
+select {
+  background-color: #EBF0EF;
+  width: 55%;
+  height: 30px;
+  align-self: flex-end;
+  border: none;
+  border-radius: 15px;
+  margin-left: 15px;
+  padding: 0 20px;
+  font: normal 15px 'Roboto', sans-serif;
+  color: #505A5A;
+}
+
+button {
+  background-color: #8AB4CD;
+  color: #EBF0EF;
+  font-weight: bold;
+  font-size: 19px;
+  border: none;
+  border-radius: 20px;
+  height: 40px;
+  width: 230px;
+  align-self: flex-end;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #DF7B63;
+}
+
+button:disabled {
+  background-color: #91a3a3;
+}
+
+@media(max-width: 720px) {
+  body{
+    display: block;
+  }
+
+  form {
+    height: calc(100% - 100px);
+    margin-top: 1rem;
+    flex-direction: column;
+  }
+
+  form > fieldset {
+    width: 90%;
+    padding: 40px 0px 0px 0px;
+  }
+
+  label {
+    font-size: 15px;
+  }
+}

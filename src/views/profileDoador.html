@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/profile.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
+  <title>DOECAR | Perfil do doador</title>
+</head>
+
+<body>
+  <header>
+    <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
+  </header>
+
+  <div id="boxDataDoador" class="boxData">
+    <form method="POST" id="formDoador">
+      <fieldset>
+        <p id="doador"></p>
+
+        <div class="boxInput">
+          <label for="rua">Rua</label>
+          <input type="text" name="rua" id="rua">
+        </div>
+        <div class="boxInput">
+          <label for="numero">Número</label>
+          <input type="number" name="numero" id="numero">
+        </div>
+        <div class="boxInput">
+          <label for="bairro">Bairro</label>
+          <input type="text" name="bairro" id="bairro">
+        </div>
+
+        <button id="enable-disable" type="button">HABILITAR EDIÇÃO</button>
+        <button id="enviaEndereco" type="button" onclick="enviarForm()">SALVAR DADOS</button>
+      </fieldset>
+    </form>
+
+  </div>
+
+
+</body>
+
+</html>
+
+<script>
+  function serializeJSON(form) {
+    var json = {};
+    $(form).serializeArray().forEach(function (item) {
+      if (!json[item.name]) {
+        json[item.name] = item.value;
+        return;
+      }
+      if (!Array.isArray(json[item.name]))
+        json[item.name] = [json[item.name]];
+      json[item.name].push(item.value);
+    });
+    return json;
+  }
+
+  function enviarForm() {
+    const user = JSON.parse(sessionStorage.getItem('USER'));
+    const data = serializeJSON("#formDoador");
+    data.cod_doador = user.cod_doador;
+
+    console.log(data);
+    $.ajax({
+      url: "/updateEndereco",
+      type: 'POST',
+      data,
+    })
+      .done(function (msg) {
+        window.location = `/listDonation?cod_doador=${user.cod_doador}`;
+      })
+      .fail(function (jqXHR, textStatus, msg) {
+        alert(msg);
+      });
+  }
+
+  var disableForm = function () {
+    const user = JSON.parse(sessionStorage.getItem('USER'));
+
+    var rua = user.rua;
+    var num = Number(user.nro);
+    var bairro = user.bairro;
+
+    $('p[id="doador"]').prop('textContent', `Nome do doador: ${user.nome}`);
+
+    $('input[name="rua"]').val(rua).prop('disabled', true);
+    $('input[name="numero"]').val(num).prop('disabled', true);
+    $('input[name="bairro"]').val(bairro).prop('disabled', true);
+    $('button[id="enable-disable"]').prop('textContent', 'HABILITAR EDIÇÃO');
+    $('button[id="enviaEndereco"]').prop('disabled', true);
+
+  };
+
+  var enableForm = function () {
+    $('input[name="rua"]').prop('disabled', false);
+    $('input[name="numero"]').prop('disabled', false);
+    $('input[name="bairro"]').prop('disabled', false);
+    $('button[id="enable-disable"]').prop('textContent', 'DESABILITAR EDIÇÃO');
+    $('button[id="enviaEndereco"]').prop('disabled', false);
+  };
+
+  $(document).ready(function () {
+    disableForm()
+
+    $('button[id="enable-disable"]').click(function () {
+      if ($('input[name="rua"]').is(":disabled")) enableForm()
+      else disableForm()
+    });
+  });
+</script>

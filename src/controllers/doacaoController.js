@@ -247,7 +247,7 @@ async function addVoluntarioInDoacao(req, res) {
     else return { msg: 'Atualizado com sucesso!' }
   } catch (error) {
     console.log(error)
-    if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    if (res) return res.status(500).json({ msg: 'UPDATE ERROR' })
     else throw error
   }
 }
@@ -271,7 +271,7 @@ async function finalizeDoacao(req, res) {
     else return { msg: 'Atualizado com sucesso!' }
   } catch (error) {
     console.log(error)
-    if (res) return res.status(500).json({ msg: 'SELECT ERROR' })
+    if (res) return res.status(500).json({ msg: 'UPDATE ERROR' })
     else throw error
   }
 }
