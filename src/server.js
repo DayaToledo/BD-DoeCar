@@ -14,7 +14,7 @@ server
 .use(express.urlencoded({ extended: true }))
 .use(express.static("public"))
 .use(router)
-.listen(5500, () => {
+.listen(process.env.PORT || 5500, () => {
     console.log('Server is running!');
 });
 
