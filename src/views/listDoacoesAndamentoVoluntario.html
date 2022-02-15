@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/listDoacoesEntregues.css" />
+  <link rel="stylesheet" href="/styles/listDoacoesVoluntario.css" />
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
   <script src="https://malsup.github.io/jquery.form.js"></script>
   <title>DOECAR | Doações Em Andamento</title>
@@ -17,10 +17,12 @@
 <body>
   <header>
     <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
-    <a href='/listDonationEntregues?cod_volunt={{cod_volunt}}'><button class="botao-head">ENTREGUES</button></a>
-    <a href='/listEscolhaDoacoes?cod_volunt={{cod_volunt}}'><button class="botao-head">ESCOLHER</button></a>
-    <a href='/listDonationAndamento?cod_volunt={{cod_volunt}}'><button class="botao-head botao-atual">EM
-        ANDAMENTO</button></a>
+    <div>
+      <a href='/listDonationAndamento?cod_volunt={{cod_volunt}}'><button class="botao-head botao-atual">EM ANDAMENTO</button></a>
+      <a href='/listEscolhaDoacoes?cod_volunt={{cod_volunt}}'><button class="botao-head">ESCOLHER</button></a>
+      <a href='/listDonationEntregues?cod_volunt={{cod_volunt}}'><button class="botao-head">ENTREGUES</button></a>
+    </div>
+    <a href="/profile-voluntario"><div class="div-botao"><button class="botao-perfil">PERFIL</button></div></a>
   </header>
 
   <p class="titulo">DOAÇÕES EM ANDAMENTO</p>
@@ -60,8 +62,15 @@
     </div>
 
     <div class="divisoria4">
-      <p><button type="button" value={{doacao.cod_doacao}} onclick="finalizaDoacao(this.value)"
-          class="botao-escolher">FINALIZAR</button></p>
+      <p>
+        <button
+          type="button"
+          value={{doacao.cod_doacao}}
+          onclick="finalizaDoacao(this.value)"
+          class="botao-escolher">
+          FINALIZAR
+        </button>
+      </p>
     </div>
   </div>
   {% endfor %}
@@ -83,10 +92,10 @@
       type: 'PUT',
       data: `cod_volunt=${user.cod_volunt}&cod_doacao=${cod_doacao}`,
     })
-      .done(function (msg) {
+      .done(function () {
         window.location = `/listDonationAndamento?cod_volunt=${user.cod_volunt}`;
       })
-      .fail(function (jqXHR, textStatus, msg) {
+      .fail(function (msg) {
         alert(msg);
       });
   }

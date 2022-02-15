@@ -14,6 +14,9 @@ header {
   width: 100%;
   height: 90px;
   background: #df7b63;
+  display: grid;
+  grid-template-columns: 0.3fr 1fr 0.3fr;
+  grid-template-rows: 1fr;
 }
 
 .noResults {
@@ -24,15 +27,25 @@ header {
   text-align: center;
 }
 
+header > div {
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+}
+
+header a:first-of-type {
+  width: fit-content;
+  align-self: center;
+  justify-self: center;
+}
+
 .logo {
   width: 75px;
   height: 75px;
-  margin-top: 7px;
-  margin-left: 75px;
 }
 
 .botao-head {
-  width: fit-content;
+  width: 218px;
   height: 90px;
   cursor: pointer;
   background: #df7b63;
@@ -40,7 +53,6 @@ header {
   font-family: "Roboto", sans-serif;
   font-size: 20px;
   font-weight: bold;
-  float: right;
   padding: 0 30px;
   border: none;
   cursor: pointer;
@@ -73,6 +85,34 @@ header {
 }
 
 .botao-escolher:hover {
+  background-color: #e8d3be;
+  color: #484b4b;
+}
+
+.div-botao {
+  height: 90px;
+  width: 250px;
+  float: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.botao-perfil {
+  width: 150px;
+  height: 50px;
+  background: #8ab4cd;
+  border-radius: 50px;
+  cursor: pointer;
+  color: #ebf0ef;
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.botao-perfil:hover {
   background-color: #e8d3be;
   color: #484b4b;
 }

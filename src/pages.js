@@ -8,8 +8,12 @@ const {
   listDoacoesPendentes
 } = require('./controllers/doacaoController')
 
-function pageProfile(req, res) {
+function pageProfileDoador(req, res) {
   return res.render("profileDoador.html")
+}
+
+function pageProfileVoluntario(req, res) {
+  return res.render("profileVoluntario.html")
 }
 
 function pageLanding(req, res) {
@@ -56,7 +60,8 @@ async function pageListEscolhasDoacoes(req, res) {
 }
 
 module.exports = {
-  pageProfile,
+  pageProfileDoador,
+  pageProfileVoluntario,
   pageLanding,
   pageRegister,
   pageLogin,

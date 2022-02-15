@@ -152,10 +152,10 @@
       type: 'POST',
       data,
     })
-      .done(function (msg) {
+      .done(function () {
         window.location = `/listDonation?cod_doador=${user.cod_doador}`;
       })
-      .fail(function (jqXHR, textStatus, msg) {
+      .fail(function (msg) {
         alert(msg);
       });
   }

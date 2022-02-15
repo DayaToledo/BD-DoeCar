@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles/profile.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="https://malsup.github.io/jquery.form.js"></script>
+  <title>DOECAR | Perfil do voluntário</title>
+</head>
+
+<body>
+  <header>
+    <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
+  </header>
+
+  <div id="boxDataDoador" class="boxData">
+    <form method="POST" id="formDoador">
+      <p id="doador"></p>
+
+      <fieldset>
+      </fieldset>
+
+      <button id="enable-disable" type="button">HABILITAR EDIÇÃO</button>
+      <button id="add-veiculo" type="button" onclick="addInputs()">ADICIONAR NOVO</button>
+      <button id="enviaEndereco" type="button" onclick="enviarForm()">SALVAR DADOS</button>
+    </form>
+
+  </div>
+
+
+</body>
+
+</html>
+
+<script>
+  const htmlWithoutVeiculos = `<p>Não existem veículos cadastrados!</p>`;
+
+  const htmlVeiculos = (veiculo) => `
+    <div>
+      <div class="boxInput">
+        <input type="hidden" name="cod_veiculo" id="cod_veiculo" value="${veiculo.cod_veiculo}">
+      </div>
+
+      <div class="boxInput">
+        <label for="placa">Placa</label>
+        <input type="text" name="placa" id="placa" value="${veiculo.placa}" required>
+      </div>
+
+      <div class="boxInput">
+        <label for="marca">Marca</label>
+        <input type="text" name="marca" id="marca" value="${veiculo.marca}">
+      </div>
+
+      <div class="boxInput">
+        <label for="modelo">Modelo</label>
+        <input type="text" name="modelo" id="modelo" value="${veiculo.modelo}">
+      </div>
+
+      <div class="boxInput">
+        <label for="ano">Ano</label>
+        <input type="number" name="ano" id="ano" value="${veiculo.ano}">
+      </div>
+    </div>
+  `;
+
+  function addInputs() {
+    const htmlVeiculo = `
+      <div>
+        <div class="boxInput">
+          <input type="hidden" name="cod_veiculo" id="cod_veiculo" value="">
+        </div>
+
+        <div class="boxInput">
+          <label for="placa">Placa</label>
+          <input type="text" name="placa" id="placa" value="" required>
+        </div>
+
+        <div class="boxInput">
+          <label for="marca">Marca</label>
+          <input type="text" name="marca" id="marca" value="">
+        </div>
+
+        <div class="boxInput">
+          <label for="modelo">Modelo</label>
+          <input type="text" name="modelo" id="modelo" value="">
+        </div>
+
+        <div class="boxInput">
+          <label for="ano">Ano</label>
+          <input type="number" name="ano" id="ano" value="">
+        </div>
+      </div>
+    `;
+
+    document.querySelector('fieldset').innerHTML += htmlVeiculo
+  }
+
+  const user = JSON.parse(sessionStorage.getItem('USER'));
+
+  function serializeJSON(form) {
+    const veiculos = [];
+    const formData = $(form).serializeArray();
+
+    let obj = {};
+    let cont = 1;
+    formData.forEach((item) => {
+      if (cont % 6) obj[item.name] = item.value;
+      else {
+        veiculos.push(obj);
+        obj = {};
+        obj[item.name] = item.value;
+      }
+      cont++;
+    });
+    veiculos.push(obj);
+
+    return { veiculos };
+  }
+
+  function enviarForm() {
+    const data = serializeJSON("#formDoador");
+    data.cod_volunt = user.cod_volunt;
+
+    console.log(data);
+    $.ajax({
+      url: "/updateVeiculos",
+      type: 'POST',
+      data,
+    })
+      .done(function () {
+        window.location = `/listDonationAndamento?cod_volunt=${user.cod_volunt}`;
+      })
+      .fail(function (msg) {
+        alert(msg);
+      });
+  }
+
+  function fillForm(veiculos) {
+    console.log(veiculos)
+
+    $('p[id="doador"]').prop('textContent', `Nome do voluntário: ${user.nome}`);
+    $('button[id="enable-disable"]').prop('textContent', 'HABILITAR EDIÇÃO');
+    $('button[id="enviaEndereco"]').prop('disabled', true);
+    $('button[id="add-veiculo"]').prop('disabled', true);
+
+    if (!veiculos.length) {
+      $('fieldset').prop('innerHTML', htmlWithoutVeiculos);
+      return;
+    }
+
+    $('fieldset').prop('innerHTML', '');
+    veiculos.map((veiculo) => document.querySelector('fieldset').innerHTML += htmlVeiculos(veiculo))
+    $('input').prop('disabled', true);
+  }
+
+  var disableForm = function () {
+    $.ajax({
+      url: `/listVeiculos?cod_volunt=${user.cod_volunt}`,
+      type: 'GET'
+    })
+      .done(function (data) {
+        fillForm(data)
+      })
+      .fail(function (msg) {
+        alert(msg);
+      });
+  };
+
+  var enableForm = function () {
+    $('input').prop('disabled', false);
+    $('button[id="enable-disable"]').prop('textContent', 'DESABILITAR EDIÇÃO');
+    $('button[id="enviaEndereco"]').prop('disabled', false);
+    $('button[id="add-veiculo"]').prop('disabled', false);
+  };
+
+  $(document).ready(function () {
+    disableForm()
+
+    $('button[id="enable-disable"]').click(function () {
+      if ($('button[id="enviaEndereco"]').is(":disabled")) enableForm()
+      else disableForm()
+    });
+  });
+</script>

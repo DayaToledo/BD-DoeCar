@@ -8,16 +8,19 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="/styles/listDoacoesEntregues.css" />
+  <link rel="stylesheet" href="/styles/listDoacoesVoluntario.css" />
   <title>DOECAR | Doações Entregues</title>
 </head>
 
 <body>
   <header>
-    <a href="/"><a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a></a>
-    <a href='/listDonationEntregues?cod_volunt={{cod_volunt}}'><button class="botao-head botao-atual">ENTREGUES</button></a>
-    <a href='/listEscolhaDoacoes?cod_volunt={{cod_volunt}}'><button class="botao-head">ESCOLHER</button></a>
-    <a href='/listDonationAndamento?cod_volunt={{cod_volunt}}'><button class="botao-head">EM ANDAMENTO</button></a>
+    <a href="/"><img src="/assets/logo.png" alt="" class="logo" /></a>
+    <div>
+      <a href='/listDonationAndamento?cod_volunt={{cod_volunt}}'><button class="botao-head">EM ANDAMENTO</button></a>
+      <a href='/listEscolhaDoacoes?cod_volunt={{cod_volunt}}'><button class="botao-head">ESCOLHER</button></a>
+      <a href='/listDonationEntregues?cod_volunt={{cod_volunt}}'><button class="botao-head botao-atual">ENTREGUES</button></a>
+    </div>
+    <a href="/profile-voluntario"><div class="div-botao"><button class="botao-perfil">PERFIL</button></div></a>
   </header>
 
   <p class="titulo">DOAÇÕES ENTREGUES</p>

@@ -21,25 +21,25 @@
 
   <div id="boxDataDoador" class="boxData">
     <form method="POST" id="formDoador">
+      <p id="doador"></p>
       <fieldset>
-        <p id="doador"></p>
-
-        <div class="boxInput">
-          <label for="rua">Rua</label>
-          <input type="text" name="rua" id="rua">
+        <div>
+          <div class="boxInput">
+            <label for="rua">Rua</label>
+            <input type="text" name="rua" id="rua">
+          </div>
+          <div class="boxInput">
+            <label for="numero">Número</label>
+            <input type="number" name="numero" id="numero">
+          </div>
+          <div class="boxInput">
+            <label for="bairro">Bairro</label>
+            <input type="text" name="bairro" id="bairro">
+          </div>
         </div>
-        <div class="boxInput">
-          <label for="numero">Número</label>
-          <input type="number" name="numero" id="numero">
-        </div>
-        <div class="boxInput">
-          <label for="bairro">Bairro</label>
-          <input type="text" name="bairro" id="bairro">
-        </div>
-
-        <button id="enable-disable" type="button">HABILITAR EDIÇÃO</button>
-        <button id="enviaEndereco" type="button" onclick="enviarForm()">SALVAR DADOS</button>
       </fieldset>
+      <button id="enable-disable" type="button">HABILITAR EDIÇÃO</button>
+      <button id="enviaEndereco" type="button" onclick="enviarForm()">SALVAR DADOS</button>
     </form>
 
   </div>
@@ -75,10 +75,10 @@
       type: 'POST',
       data,
     })
-      .done(function (msg) {
+      .done(function () {
         window.location = `/listDonation?cod_doador=${user.cod_doador}`;
       })
-      .fail(function (jqXHR, textStatus, msg) {
+      .fail(function (msg) {
         alert(msg);
       });
   }
