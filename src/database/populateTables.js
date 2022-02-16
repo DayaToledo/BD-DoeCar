@@ -71,9 +71,10 @@ const main = async () => {
       VALUES
         ("Doação de blusas",  6, 2, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13T14:42", "2021-05-13T14:42", "2021-06-03T14:42", "Entregue",     1),
         ("Doação de arroz",   2, 1, 3, 1, 1,    "Rua dezembro", 155, "Vila Maria Madalena", "2021-05-13T14:42", "2021-05-13T14:42", "2021-08-02T14:42", "Entregue",     1),
-        ("Doação de feijão",  5, 1, 2, 3, null, "Rua Pernambuco", 986, "Bairro Piauí",      "2021-05-13T14:42", "2021-05-13T14:42", "2021-10-09T14:42", "Pendente",     1),
-        ("Doação de sapato",  2, 3, 1, 2, null, "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2021-06-18T14:42", "Pendente",     1),
-        ("Doação de sabão",   6, 5, 1, 4, 1,    "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2021-12-15T14:42", "Em andamento", 1);
+        ("Doação de feijão",  5, 1, 2, 3, null, "Rua Pernambuco", 986, "Bairro Piauí",      "2021-05-13T14:42", "2021-05-13T14:42", "2022-10-09T14:42", "Pendente",     1),
+        ("Doação de sapato",  2, 3, 1, 2, null, "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2022-06-18T14:42", "Pendente",     1),
+        ("Doação de sabão",   6, 5, 1, 4, 1,    "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2022-12-15T14:42", "Pendente",     1),
+        ("Doação de arroz",   6, 5, 1, 4, 1,    "Rua Santa Luzia", 2365, "Jardim João",     "2021-05-13T14:42", "2021-05-13T14:42", "2022-12-15T14:42", "Em andamento", 1);
     `)
 
     return Promise.resolve("As tabelas estavam vazias e todas foram populadas!");
